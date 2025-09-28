@@ -21,4 +21,8 @@ function _draw()
 	gates:draw()
 
 	print(game.score, 2, 122, 7)
+
+	if game.state == "game_over" then
+		print_centered("press 🅾️ to restart", 20, 7)
+	end
 end
