@@ -13,8 +13,10 @@ I'm taking on the [20 Games Challenge](https://20_games_challenge.gitlab.io) to 
 flappy/
 ├── docs/                  # Lightweight notes and documentation
 ├── src/                   # Source code
-│   ├── entities/          # Game objects (e.g., Player)
+│   ├── game_state.lua     # Game state / score manager
+│   ├── gates.lua          # The area the player must pass through
 │   ├── helpers.lua        # Helper functions
+│   ├── player.lua         # Our hero
 │   └── main.lua           # Entry point with _init, _update, _draw
 ├── flappy.p8              # Main P8 file; includes /src files
 └── README.md              # Main project README
