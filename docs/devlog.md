@@ -8,3 +8,4 @@
 - Create player object
 - Created function to draw sprites based on object properties
 - Simple gravity system in `gravity_system.lua`
+- Added player input / flap
