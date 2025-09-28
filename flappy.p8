@@ -3,6 +3,7 @@ version 42
 __lua__
 #include src/helpers.lua
 #include src/player.lua
+#include src/gap.lua
 #include src/main.lua
 
 __gfx__
