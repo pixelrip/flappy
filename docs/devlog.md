@@ -7,4 +7,4 @@
 - Created temporary simple player sprite
 - Create player object
 - Created function to draw sprites based on object properties
-- 
+- Simple gravity system in `gravity_system.lua`
