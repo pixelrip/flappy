@@ -1,5 +1,6 @@
+-- gates.lua
 -- "Gates" are the safe passages the player must navigate through
--- In OG Flappy Bird, its the space between the pipes
+-- Currently they check for collisions, but it seems appropriate for scope
 
 gates = {
 
@@ -26,15 +27,12 @@ gates = {
         self.list = {}
         self.spawn_timer = 0
     end,
-
-    update = function(self)
-        -- Move gates
-        for gate in all(self.list) do
-            gate.x -= 1
-
+    
+    check_collided = function(self, gate, player)
             -- Check that player is safe
             -- FIX: Using player sprite height; make hitbox
             local safe = false
+
             if not gate.passed then
                 if player.x + player.sw < gate.x then 
                     safe = true
@@ -53,10 +51,20 @@ gates = {
             -- Log the collision for now
             if not safe then
                 log("Collision!")
+                return true
+            end
+    end,
+
+    update = function(self)
+        -- Move gates
+        for gate in all(self.list) do
+            gate.x -= 1
+
+            -- Check for collisions with player
+            if self:check_collided(gate, player) then
                 game:switch_state("game_over")
             end
-
-
+            
             -- Delete gate if it has moved off screen
             if gate.x < -gate.w then
                 del(self.list, gate)
