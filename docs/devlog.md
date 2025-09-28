@@ -15,3 +15,4 @@
 - Refactor: Gap -> Gates with gate spawning functionality
 - Add gate collision and passing logic
 - Add game state management and reset logic
+- Added score tracking and display
