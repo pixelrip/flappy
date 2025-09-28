@@ -4,11 +4,11 @@ end
 
 function _update()
 	player:update()
-	gap:update()
+	gates:update()
 end
 
 function _draw()
 	cls(1)
 	player:draw()
-	gap:draw()
+	gates:draw()
 end
