@@ -5,6 +5,7 @@ I'm taking on the [20 Games Challenge](https://20_games_challenge.gitlab.io) to 
 ## Requirements
 
 - [PICO-8](https://www.lexaloffle.com/pico-8.php)
+- Git (duh)
 
 ## Project Structure
 
@@ -19,6 +20,7 @@ flappy/
 └── README.md              # Main project README
 ```
 
-## Useful Docs
+## Helpful Docs
 
 - [20 Games Challege: Game 1](/docs/20-games-challenge.md): Outline of goals for this game from the 20 games challenge.
+- [Project Plan](/docs/project-plan.md): Requirements, todos, and anything related to getting this project done.
