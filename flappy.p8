@@ -2,7 +2,6 @@ pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
 #include src/helpers.lua
-#include src/gravity_system.lua
 #include src/player.lua
 #include src/main.lua
 

@@ -1,6 +1,7 @@
 player = {
     -- constants
     FLAP_STRENGTH = -3.5,
+    GRAVITY = 0.1,
     -- pos
     x = 10,
     y = 10,
@@ -11,18 +12,26 @@ player = {
     sh = 8,
     -- vel
     vy = 0,
+    --state
+    btn_pressed = false,
 
     update = function(self)
-        if btnp(4) then
-            if self.vy < 0 then return end
+        -- Check for button press
+        if btn(5) and not self.btn_pressed then
+            self.btn_pressed = true
             self.vy += self.FLAP_STRENGTH
+        elseif not btn(5) then
+            self.btn_pressed = false
         end
 
+        -- If the player is moving upwards, reduce the upward velocity slightly
         if self.vy < 0 then 
             self.vy += 0.1
         end
 
-        gs:apply(self)
+        -- Apply gravity
+        self.vy = self.vy + self.GRAVITY
+        self.y += self.vy
     end,
 
     draw = function(self)
