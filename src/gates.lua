@@ -1,3 +1,6 @@
+-- "Gates" are the safe passages the player must navigate through
+-- In OG Flappy Bird, its the space between the pipes
+
 gates = {
 
     list = {},
@@ -23,6 +26,29 @@ gates = {
         -- Move gates
         for gate in all(self.list) do
             gate.x -= 1
+
+            -- Check that player is safe
+            -- FIX: Using player sprite height; make hitbox
+            local safe = false
+            if not gate.passed then
+                if player.x + player.sw < gate.x then 
+                    safe = true
+                elseif player.x > gate.x + gate.w then 
+                    safe = true
+                    gate.passed = true
+                    log("Gate passed!")
+                elseif player.y > gate.y and player.y + player.sh < gate.y + gate.h then 
+                    safe = true
+                end
+            else
+                safe = true
+            end
+
+            -- Log the collision for now
+            if not safe then
+                log("Collision!")
+            end
+
 
             -- Delete gate if it has moved off screen
             if gate.x < -gate.w then
