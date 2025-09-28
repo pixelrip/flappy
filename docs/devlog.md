@@ -13,4 +13,4 @@
 - Limited the upward velocity possible
 - Simple "gap" (pipe pairs) object
 - Refactor: Gap -> Gates with gate spawning functionality
-- 
+- Add gate collision and passing logic
