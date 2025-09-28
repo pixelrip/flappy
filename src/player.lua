@@ -2,9 +2,12 @@ player = {
     -- constants
     FLAP_STRENGTH = -3.5,
     GRAVITY = 0.1,
+    START_X = 10,
+    START_Y = 60,
+    MAX_UP_VELOCITY = -4,
     -- pos
     x = 10,
-    y = 10,
+    y = 60,
     -- spr
     sx = 8, 
     sy = 0,
@@ -16,8 +19,8 @@ player = {
     btn_pressed = false,
 
     reset = function(self)
-        self.x = 10
-        self.y = 60
+        self.x = self.START_X
+        self.y = self.START_Y
         self.vy = 0
         self.btn_pressed = false
     end,
@@ -26,7 +29,7 @@ player = {
         -- Check for button press
         if btn(5) and not self.btn_pressed then
             self.btn_pressed = true
-            self.vy = max(-4, self.vy + self.FLAP_STRENGTH)
+            self.vy = max(self.MAX_UP_VELOCITY, self.vy + self.FLAP_STRENGTH)
         elseif not btn(5) then
             self.btn_pressed = false
         end

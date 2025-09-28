@@ -11,7 +11,10 @@ game = {
     switch_state = function(self, new_state)
         self.state = new_state
         log("Switched to state: " .. new_state)
-    end
-
+    end,
     
+    add_score = function(self, points)
+        self.score += points
+    end 
+
 }

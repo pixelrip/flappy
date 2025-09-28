@@ -19,4 +19,6 @@ function _draw()
 	cls(1)
 	player:draw()
 	gates:draw()
+
+	print(game.score, 2, 122, 7)
 end

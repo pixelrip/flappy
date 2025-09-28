@@ -41,6 +41,7 @@ gates = {
                 elseif player.x > gate.x + gate.w then 
                     safe = true
                     gate.passed = true
+                    game:add_score(1)
                     log("Gate passed!")
                 elseif player.y > gate.y and player.y + player.sh < gate.y + gate.h then 
                     safe = true
