@@ -12,3 +12,5 @@
 - Changed mind and removed gravity system in favor of letting the player handle its own gravity
 - Limited the upward velocity possible
 - Simple "gap" (pipe pairs) object
+- Refactor: Gap -> Gates with gate spawning functionality
+- 
