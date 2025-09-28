@@ -19,7 +19,7 @@ player = {
         -- Check for button press
         if btn(5) and not self.btn_pressed then
             self.btn_pressed = true
-            self.vy += self.FLAP_STRENGTH
+            self.vy = max(-5, self.vy + self.FLAP_STRENGTH)
         elseif not btn(5) then
             self.btn_pressed = false
         end
