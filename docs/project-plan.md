@@ -7,9 +7,9 @@ This living document outlines my plan for the game
 
 Essential Objects:
 
-- [ ] Bird - position (x,y), velocity_y, sprite
-- [ ] Pipe pairs - position, gap_y, gap_size
-- [ ] Score - just a number variable, not an object
+- [x] Bird - position (x,y), velocity_y, sprite
+- [x] Pipe pairs - position, gap_y, gap_size
+- [ ] Score 
 
 Essential Systems:
 
