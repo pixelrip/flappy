@@ -3,7 +3,7 @@
 
 ## Day 1: 2025-09-28
 
-- Time worked: 10:45am -> ???
+- Time worked: 5hrs
 - Created temporary simple player sprite
 - Create player object
 - Created function to draw sprites based on object properties
@@ -16,3 +16,5 @@
 - Add gate collision and passing logic
 - Add game state management and reset logic
 - Added score tracking and display
+- Refactor: Gate collision check into its own function
+- Added game over message
