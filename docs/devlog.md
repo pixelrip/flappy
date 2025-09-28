@@ -1,7 +1,7 @@
 # Dev Log
 
 
-## 2025-09-28
+## Day 1: 2025-09-28
 
 - Time worked: 10:45am -> ???
 - Created temporary simple player sprite
@@ -14,3 +14,4 @@
 - Simple "gap" (pipe pairs) object
 - Refactor: Gap -> Gates with gate spawning functionality
 - Add gate collision and passing logic
+- Add game state management and reset logic
