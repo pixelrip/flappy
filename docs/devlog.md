@@ -10,3 +10,5 @@
 - Simple gravity system in `gravity_system.lua`
 - Added player input / flap
 - Changed mind and removed gravity system in favor of letting the player handle its own gravity
+- Limited the upward velocity possible
+- Simple "gap" (pipe pairs) object
