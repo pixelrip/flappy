@@ -24,3 +24,4 @@ flappy/
 
 - [20 Games Challege: Game 1](/docs/20-games-challenge.md): Outline of goals for this game from the 20 games challenge.
 - [Project Plan](/docs/project-plan.md): Requirements, todos, and anything related to getting this project done.
+- [Dev Log](/docs/devlog.md): A simple tracking of what I worked on in each session.
