@@ -15,6 +15,13 @@ player = {
     --state
     btn_pressed = false,
 
+    reset = function(self)
+        self.x = 10
+        self.y = 60
+        self.vy = 0
+        self.btn_pressed = false
+    end,
+
     update = function(self)
         -- Check for button press
         if btn(5) and not self.btn_pressed then
@@ -37,6 +44,8 @@ player = {
         if self.y > 128+self.sh or self.y < 0-self.sh then
             self.y=60
             self.vy=0
+
+            game:switch_state("game_over")
         end
     end,
 

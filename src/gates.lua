@@ -22,6 +22,11 @@ gates = {
         })
     end,
 
+    reset = function(self)
+        self.list = {}
+        self.spawn_timer = 0
+    end,
+
     update = function(self)
         -- Move gates
         for gate in all(self.list) do
@@ -47,6 +52,7 @@ gates = {
             -- Log the collision for now
             if not safe then
                 log("Collision!")
+                game:switch_state("game_over")
             end
 
 
