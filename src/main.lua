@@ -6,7 +6,7 @@ end
 function _update()
 	if game.state == "playing" then
 		player:update()
-		gates:update()
+		gates:update(player)
 	elseif game.state == "game_over" then
 		if btnp(4) then
 			game:reset()

@@ -1,5 +1,5 @@
 -- gates.lua
--- "Gates" are the safe passages the player must navigate through
+-- "Gates" are the _safe passages the _pl must navigate through
 -- Currently they check for collisions, but it seems appropriate for scope
 
 gates = {
@@ -28,46 +28,47 @@ gates = {
         self.spawn_timer = 0
     end,
     
-    check_collided = function(self, gate, player)
-            -- Check that player is safe
-            -- FIX: Using player sprite height; make hitbox
-            local safe = false
+    check_collided = function(self, _gt, _pl)
+            -- Check that _pl(ayer) is _safe
+            -- _gt (gate)
+            -- FIX: Using _pl sprite height; make hitbox
+            local _safe = false
 
-            if not gate.passed then
-                if player.x + player.sw < gate.x then 
-                    safe = true
-                elseif player.x > gate.x + gate.w then 
-                    safe = true
-                    gate.passed = true
+            if not _gt.passed then
+                if _pl.x + _pl.sw < _gt.x then 
+                    _safe = true
+                elseif _pl.x > _gt.x + _gt.w then 
+                    _safe = true
+                    _gt.passed = true
                     game:add_score(1)
-                    log("Gate passed!")
-                elseif player.y > gate.y and player.y + player.sh < gate.y + gate.h then 
-                    safe = true
+                    log("_Gt passed!")
+                elseif _pl.y > _gt.y and _pl.y + _pl.sh < _gt.y + _gt.h then 
+                    _safe = true
                 end
             else
-                safe = true
+                _safe = true
             end
 
             -- Log the collision for now
-            if not safe then
+            if not _safe then
                 log("Collision!")
                 return true
             end
     end,
 
-    update = function(self)
+    update = function(self, _pl)
         -- Move gates
-        for gate in all(self.list) do
-            gate.x -= 1
+        for _gt in all(self.list) do
+            _gt.x -= 1
 
-            -- Check for collisions with player
-            if self:check_collided(gate, player) then
+            -- Check for collisions with _pl
+            if self:check_collided(_gt, _pl) then
                 game:switch_state("game_over")
             end
             
-            -- Delete gate if it has moved off screen
-            if gate.x < -gate.w then
-                del(self.list, gate)
+            -- Delete _gt if it has moved off screen
+            if _gt.x < -_gt.w then
+                del(self.list, _gt)
             end
         end
 
@@ -81,9 +82,9 @@ gates = {
 
     draw = function(self)
         -- RRECTFILL(X, Y, W, H, R, [COL])
-        for gate in all(self.list) do
-            rrectfill(gate.x,0,gate.w,gate.y,0,3)
-            rrectfill(gate.x,gate.y+gate.h,gate.w,128,0,3)
+        for _gt in all(self.list) do
+            rrectfill(_gt.x,0,_gt.w,_gt.y,0,3)
+            rrectfill(_gt.x,_gt.y+_gt.h,_gt.w,128,0,3)
         end
     end
 }
