@@ -5,6 +5,7 @@ end
 
 function _update()
 	if game.state == "playing" then
+		game:update_spike()
 		player:update()
 		gates:update(player)
 	elseif game.state == "game_over" then
