@@ -36,6 +36,11 @@ game = {
         return self.base_difficulty + self.spike_modifier
     end,
 
+    -- Overall game speed (not effected by diffculty spikes)
+    get_speed = function(self)
+        return min(MAX_SPEED, SPEED_INCREASE_RATE * self.base_difficulty + (1 - SPEED_INCREASE_RATE))
+    end,
+
     -- Manage lifecycle of difficulty spikes
     update_spike = function(self)
         -- Spike duration

@@ -1,6 +1,7 @@
 -- gates.lua
 -- "Gates" are the _safe passages the _pl must navigate through
--- Currently they check for collisions, but it seems appropriate for scope
+-- Currently they are responsible for checking for collisions, but that
+-- seems appropriate for scope of the game
 
 gates = {
 
@@ -14,7 +15,7 @@ gates = {
 
     update = function(self, _pl)
         local _d = game:get_effective_difficulty()
-        local _s = min(MAX_SPEED, 1 + (_d / 10)) -- gate speed
+        local _s = game:get_speed()
 
         self:_move_gates(_d, _s, _pl)
         self:_gate_spawner(_d, _s)
@@ -28,7 +29,7 @@ gates = {
             
             -- DEBUG
             local _d = game:get_effective_difficulty()
-            local _s = min(2.5, 1 + (_d / 10)) -- gate speed
+            local _s = game:get_speed()
             print("s: ".._s, _gt.x+1, _gt.y+_gt.h+2, 10)
             print("d: ".._d, _gt.x+1, _gt.y+_gt.h+8, 10)
             print("y: ".._gt.y, _gt.x+1, _gt.y-18, 10)
