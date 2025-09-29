@@ -1,5 +1,9 @@
 # Dev Log
 
+## Day 2: 2025-09-29
+
+- Code review/small refactors
+
 
 ## Day 1: 2025-09-28
 
