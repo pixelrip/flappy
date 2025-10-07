@@ -1,8 +1,18 @@
 # Dev Log
+Total Time: 9hrs
 
 ## Day 2: 2025-09-29
 
+- Time worked: 4hrs
 - Code review/small refactors
+- Researching game difficulty curves
+- Began integrating difficulty slope
+- Introduced constants for easy gameplay tweaking `constants.lua`
+- EOD status: WIP on the difficulty slope
+    - Game speed: Done
+    - Gate spawning: Not done
+    - Gate height: Broken
+    - Gate width: Broken
 
 
 ## Day 1: 2025-09-28

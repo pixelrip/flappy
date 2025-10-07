@@ -17,7 +17,7 @@ gates = {
         local _d = game:get_effective_difficulty()
         local _s = game:get_speed()
 
-        self:_move_gates(_d, _s, _pl)
+        self:_move_gates(_s, _pl)
         self:_gate_spawner(_d, _s)
 
     end,
@@ -28,13 +28,12 @@ gates = {
             rrectfill(_gt.x,_gt.y+_gt.h,_gt.w,128,0,3)
             
             -- DEBUG
-            local _d = game:get_effective_difficulty()
-            local _s = game:get_speed()
-            print("s: ".._s, _gt.x+1, _gt.y+_gt.h+2, 10)
-            print("d: ".._d, _gt.x+1, _gt.y+_gt.h+8, 10)
             print("y: ".._gt.y, _gt.x+1, _gt.y-18, 10)
             print("w: ".._gt.w, _gt.x+1, _gt.y-12, 10)
             print("h: ".._gt.h, _gt.x+1, _gt.y-6, 10)
+            print("s: "..game:get_speed(), _gt.x+1, _gt.y+_gt.h+2, 10)
+            print("b: "..game.base_difficulty, _gt.x+1, _gt.y+_gt.h+8, 10)
+            print("d: "..game:get_effective_difficulty(), _gt.x+1, _gt.y+_gt.h+14, 10)
 
         end
     end,
@@ -44,9 +43,10 @@ gates = {
         self.spawn_timer = 0
     end,
 
+
     -- "Private" methods
 
-    _move_gates = function(self, _d, _s, _pl)
+    _move_gates = function(self, _s, _pl)
 
         for _gt in all(self.list) do
             _gt.x -= _s
@@ -64,13 +64,10 @@ gates = {
     end,
 
     _gate_spawner = function(self, _d, _s)
-        local _ngg = min(40, 20 + (_d * 2)) -- new gate gap
-        local _ttpg = _ngg / _s -- time to pass gate (frames)
-        local _rf = max(30, 90 - (_d * 5)) -- rest frames
-        local _csi = _rf + _ttpg -- current spawn interval
+
 
         self.spawn_timer += 1
-        if self.spawn_timer >= _csi then
+        if self.spawn_timer >= 128 then
             self:_spawn_gate(_d)
             self.spawn_timer = 0
         end
