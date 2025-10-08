@@ -35,6 +35,10 @@ gates = {
             print("b: "..game.base_difficulty, _gt.x+1, _gt.y+_gt.h+8, 10)
             print("d: "..game:get_effective_difficulty(), _gt.x+1, _gt.y+_gt.h+14, 10)
 
+            print("mx: ".._gt.debug_max_gap, _gt.x+_gt.w+20, _gt.y-18, 10)
+            print("mn: ".._gt.debug_min_gap, _gt.x+_gt.w+20, _gt.y-12, 10)
+            print("g: ".._gt.debug_gap, _gt.x+_gt.w+20, _gt.y-6, 10)
+
         end
     end,
 
@@ -77,23 +81,30 @@ gates = {
         local _h = self:_get_gate_height(_d)
         local _y = self:_get_gate_y(_d, _h)
 
-        add(self.list, {
-            x = 128, -- Start off screen
-            y = _y,
-            w = _w,
-            h = _h,
-            passed = false
-        })
-
         -- Calculate the next spawn time based on difficulty
         -- Time for the gate to move on screen
         local _t = _w / _s
         -- Gap time based on difficulty
         local _offset = (_d - 1) * GATE_GAP_INCREMENT
-        local _gmax = GATE_GAP_MAX - _offset
-        local _gmin = GATE_GAP_MIN - _offset
+        local _gmax = flr(max(GATE_GAP_MAX - _offset, GATE_CLAMP_GAP_MAX) / _s)
+        local _gmin = flr(max(GATE_GAP_MIN - _offset, GATE_CLAMP_GAP_MIN) / _s)
         local _g = rnd_between(_gmin, _gmax)
+
         self.next_gate = _t + _g
+
+        add(self.list, {
+            x = 128, -- Start off screen
+            y = _y,
+            w = _w,
+            h = _h,
+            passed = false,
+
+            -- DEBUG
+            debug_max_gap = _gmax,
+            debug_min_gap = _gmin,
+            debug_gap = _g
+        })
+
     end,
     
     _get_gate_y = function(self, _d, _h)
