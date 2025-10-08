@@ -1,18 +1,15 @@
 # Dev Log
 Total Time: 9hrs
 
-TODO:
- - [ ] Update difficulty.md? 
-
----
-
 ## Day 3: 2025-10-08
 
-- Pomodoros: X X X _ _ _ _ _ _ _
+- Pomodoros: X X X X - X X _ _ _ _
 - Continue work on difficulty slope
     - Updating notes/thoughts in `difficulty.md`
     - Randomize gate sizing (w/h) scaled with difficulty
-    - 
+    - Simplified Y placement for now
+    - Gate spawn time more dynamic
+- On screen debugging
 
 
 
