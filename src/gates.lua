@@ -7,10 +7,11 @@ gates = {
 
     list = {},
     spawn_timer = 0,
+    next_gate = 0,
 
     -- "Public" methods 
     init = function(self)
-        self:_spawn_gate(1)
+        self:_spawn_gate(1,1)
     end,
 
     update = function(self, _pl)
@@ -65,14 +66,13 @@ gates = {
     _gate_spawner = function(self, _d, _s)
         self.spawn_timer += 1
 
-        -- TODO: Make spawn rate a function of difficulty
-        if self.spawn_timer >= GATE_SPAWN_TIMER then
-            self:_spawn_gate(_d)
+        if self.spawn_timer >= self.next_gate then
+            self:_spawn_gate(_d, _s)
             self.spawn_timer = 0
         end
     end,
 
-    _spawn_gate = function(self, _d)
+    _spawn_gate = function(self, _d, _s)
         local _w = self:_get_gate_width(_d)
         local _h = self:_get_gate_height(_d)
         local _y = self:_get_gate_y(_d, _h)
@@ -84,6 +84,16 @@ gates = {
             h = _h,
             passed = false
         })
+
+        -- Calculate the next spawn time based on difficulty
+        -- Time for the gate to move on screen
+        local _t = _w / _s
+        -- Gap time based on difficulty
+        local _offset = (_d - 1) * GATE_GAP_INCREMENT
+        local _gmax = GATE_GAP_MAX - _offset
+        local _gmin = GATE_GAP_MIN - _offset
+        local _g = rnd_between(_gmin, _gmax)
+        self.next_gate = _t + _g
     end,
     
     _get_gate_y = function(self, _d, _h)
