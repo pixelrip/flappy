@@ -73,27 +73,21 @@ gates = {
     end,
 
     _spawn_gate = function(self, _d)
+        local _w = self:_get_gate_width(_d)
+        local _h = self:_get_gate_height(_d)
+        local _y = self:_get_gate_y(_d, _h)
+
         add(self.list, {
             x = 128, -- Start off screen
-            y = self:_get_gate_y(_d),
-            w = self:_get_gate_width(_d),
-            h = self:_get_gate_height(_d),
+            y = _y,
+            w = _w,
+            h = _h,
             passed = false
         })
     end,
     
-    _get_gate_y = function(self, _d)
-        local _lgy = 64 -- last gate y
-
-        if #self.list > 0 then
-            _lgy = self.list[#self.list].y
-        end
-
-        local _myd = 50 - (_d * 2) -- max y delta
-        _myd = max(25, _myd)
-
-        local _ny = rnd_between(_lgy - _myd, _lgy + _myd)
-        return mid(20, _ny, 80)
+    _get_gate_y = function(self, _d, _h)
+        return rnd_between(16, 112 - _h)
     end,
 
     _get_gate_height = function(self, _d)
