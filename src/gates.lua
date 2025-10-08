@@ -28,16 +28,18 @@ gates = {
             rrectfill(_gt.x,_gt.y+_gt.h,_gt.w,128,0,3)
             
             -- DEBUG
-            print("y: ".._gt.y, _gt.x+1, _gt.y-18, 10)
-            print("w: ".._gt.w, _gt.x+1, _gt.y-12, 10)
-            print("h: ".._gt.h, _gt.x+1, _gt.y-6, 10)
-            print("s: "..game:get_speed(), _gt.x+1, _gt.y+_gt.h+2, 10)
-            print("b: "..game.base_difficulty, _gt.x+1, _gt.y+_gt.h+8, 10)
-            print("d: "..game:get_effective_difficulty(), _gt.x+1, _gt.y+_gt.h+14, 10)
+            if DEBUG then
+                print("y: ".._gt.y, _gt.x+1, _gt.y-18, 10)
+                print("w: ".._gt.w, _gt.x+1, _gt.y-12, 10)
+                print("h: ".._gt.h, _gt.x+1, _gt.y-6, 10)
+                print("s: "..game:get_speed(), _gt.x+1, _gt.y+_gt.h+2, 10)
+                print("b: "..game.base_difficulty, _gt.x+1, _gt.y+_gt.h+8, 10)
+                print("d: "..game:get_effective_difficulty(), _gt.x+1, _gt.y+_gt.h+14, 10)
 
-            print("mx: ".._gt.debug_max_gap, _gt.x+_gt.w+20, _gt.y-18, 10)
-            print("mn: ".._gt.debug_min_gap, _gt.x+_gt.w+20, _gt.y-12, 10)
-            print("g: ".._gt.debug_gap, _gt.x+_gt.w+20, _gt.y-6, 10)
+                print("mx: ".._gt.debug_max_gap, _gt.x+_gt.w+20, _gt.y-18, 10)
+                print("mn: ".._gt.debug_min_gap, _gt.x+_gt.w+20, _gt.y-12, 10)
+                print("g: ".._gt.debug_gap, _gt.x+_gt.w+20, _gt.y-6, 10)
+            end
 
         end
     end,

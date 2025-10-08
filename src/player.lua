@@ -43,6 +43,8 @@ player = {
         draw_sprite(self)
 
         -- DEBUG
-        print("vy: "..self.vy, self.x+1, self.y-10, 10)
+        if DEBUG then
+            print("vy: "..self.vy, self.x+1, self.y-10, 10)
+        end
     end
 }
