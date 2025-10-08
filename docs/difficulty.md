@@ -5,9 +5,8 @@ Some notes on how I'm thinking about difficulty in this game.
 ## Potential Difficulty Levers
 
 1. Gate movement speed (faster = more difficult)
-2. Gate height (smaller = more difficult)
-3. Gate width (wider = more difficult)
-4. Gate spawn timer / distance between gates (smaller = more difficult)
+2. Gate size (smaller height = more difficult; more width = more difficult)
+3. Gate spawn timer / distance between gates (smaller = more difficult)
 
 ## Overall Difficulty Factor
 
@@ -94,19 +93,29 @@ _get_gate_width = function(self, difficulty)
     local _gwmin = min(GATE_BASE_MIN_WIDTH + _offset, GATE_CLAMP_MIN_WIDTH)
     return rnd_between(_gwmin, _gwmax)
 end
+```
 
 This is the first draft that does not include any "fairness" checks, but needs to be considered during playtesting.
 
+
+## Lever 3: Distance between gates
+
+The gap between gates should also be randomized but scaled with difficulty as well
+
+```lua
+-- /src/constants.lua
+GATE_GAP_MAX = 192
+GATE_GAP_MIN = 128
+GATE_GAP_INCREMENT = 4
+
+-- /src/gates.lua
+-- Time for the current gate to move on screen
+local _t = _w / _s      
+-- Gap time based on difficulty
+local _offset = (_d - 1) * GATE_GAP_INCREMENT
+local _gmax = GATE_GAP_MAX - _offset
+local _gmin = GATE_GAP_MIN - _offset
+local _g = rnd_between(_gmin, _gmax)
+self.next_gate = _t + _g
+
 ```
-
-
-# Ensuring Fairness
-
-To ensure fairness, we could base the `y` position of new gates on the `y` position of the previous gate. Assuming its physically possible for our player to cover the `y` distance in the time/distance between gates, we can call it "fair."
-
-So how do we calculate the vertical distance the player can travel in the time it takes to get from one gate to the next? Here's our variables:
-
-- Gravity (_gr) = 0.1
-- Flap Strength (_fs) = -3.5
-- Gate Speed (_gs) = 1 (pixel per frame)
-- Gate spawn interval (_gs) = 90 (frames) - previous-gate-width
