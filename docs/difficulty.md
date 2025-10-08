@@ -11,18 +11,62 @@ Some notes on how I'm thinking about difficulty in this game.
 
 # Overall Difficulty Factor
 
-One approach would be to tie some/all of the difficulty levers to a single `difficulty_factor`. It could be a function of the players score (which currently matches the number of gates they have successfully passed).
-
-An exmaple of linear progression would look like this:
+The approach I've taken is to have a `base_difficulty` property in my main `game` object that acts as a multiplyer for the various "levers." 
 
 ```lua
-game.difficulty = 1 + flr(game.score / 10)
+-- /src/constants.lua
+DIFFICULTY_INCREASE_RATE = 10
+
+-- /src/game.lua
+game.base_difficulty = 1 + flr(game.score / DIFFICULTY_INCREASE_RATE)
 
 -- game.score = 0 -> game.difficulty = 1
 -- game.score = 10 -> game.difficulty = 2
 -- game.score = 50 -> game.difficulty = 6
-
 ```
+
+# Difficulty Spikes
+In order to keep the game from feeling too linear, I've introduced temporary difficulty spikes on a simple timer.
+
+```lua
+
+-- /src/game.lua
+game.spike_modifer = SPIKE_DIFFICULTY
+game.spike_timer = SPIKE_DURATION
+
+-- Get effective difficulty during spikes
+game.base_difficulty + game.spike_modifier
+```
+
+
+# Lever 1: Game Speed
+
+The overall game speed also exists inside the main game object. It is a measure of pixels per frame (moving on the x axis). The speed is NOT imacted by the difficulty spikes (it feels far too unnatural).
+
+```lua
+-- /src/constants.lua
+MAX_SPEED  = 5 
+SPEED_INCREASE_RATE = 0.25 
+
+-- /src/game.lua
+get_speed = function(self)
+    return min(MAX_SPEED, SPEED_INCREASE_RATE * self.base_difficulty + (1 - SPEED_INCREASE_RATE))
+end
+-- 
+```
+
+The primary impact of game speed on difficulty is how fast the gates move across the screen.
+
+```lua
+-- /src/gates.lua
+gate.x -= game.get_speed()
+```
+
+
+# Lever 2: Gate Height
+
+The "height" of the gate 
+
 
 # Ensuring Fairness
 
