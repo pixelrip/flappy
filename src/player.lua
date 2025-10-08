@@ -3,10 +3,11 @@ player = {
     x = 10,
     y = 60,
     -- spr
-    sx = 8, 
+    sx = 34, 
     sy = 0,
-    sw = 8,
-    sh = 8,
+    sw = 17,
+    sh = 13,
+    sa = 12,
     -- vel
     vy = 0,
     --state
