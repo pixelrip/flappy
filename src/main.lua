@@ -8,6 +8,7 @@ function _update()
 		game:update_spike()
 		player:update()
 		gates:update(player)
+		floor:update()
 	elseif game.state == "game_over" then
 		if btnp(4) then
 			game:reset()
@@ -20,6 +21,7 @@ function _draw()
 	cls(1)
 	player:draw()
 	gates:draw()
+	floor:draw()
 
 	print(game.score, 2, 122, 7)
 

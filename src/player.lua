@@ -33,7 +33,8 @@ player = {
         self.y += self.vy
 
         -- Simple out-of-bounds check
-        if self.y > 128+self.sh or self.y < 0-self.sh then
+        -- TODO: Magic numnbers; not tied to actual floor
+        if self.y+self.sh > 121 or self.y < 0-self.sh then
             self.vy=0
             game:switch_state("game_over")
         end

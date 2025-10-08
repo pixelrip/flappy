@@ -5,7 +5,11 @@ function log(txt)
 end
 
 function draw_sprite(obj)
+    local _sa = obj.sa or 0
+    palt(0, false)
+    palt(_sa, true)
     sspr(obj.sx, obj.sy, obj.sw, obj.sh, obj.x, obj.y)
+    pal()
 end
 
 function rnd_between(min, max)
