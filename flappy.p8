@@ -3,7 +3,7 @@ version 43
 __lua__
 #include src/constants.lua
 #include src/helpers.lua
-#include src/game_state.lua
+#include src/game.lua
 #include src/player.lua
 #include src/gates.lua
 #include src/main.lua
