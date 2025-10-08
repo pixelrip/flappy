@@ -19,7 +19,6 @@ gates = {
 
         self:_move_gates(_s, _pl)
         self:_gate_spawner(_d, _s)
-
     end,
 
     draw = function(self)
@@ -64,10 +63,10 @@ gates = {
     end,
 
     _gate_spawner = function(self, _d, _s)
-
-
         self.spawn_timer += 1
-        if self.spawn_timer >= 128 then
+
+        -- TODO: Make spawn rate a function of difficulty
+        if self.spawn_timer >= GATE_SPAWN_TIMER then
             self:_spawn_gate(_d)
             self.spawn_timer = 0
         end
@@ -75,7 +74,7 @@ gates = {
 
     _spawn_gate = function(self, _d)
         add(self.list, {
-            x = 128,
+            x = 128, -- Start off screen
             y = self:_get_gate_y(_d),
             w = self:_get_gate_width(_d),
             h = self:_get_gate_height(_d),
@@ -98,13 +97,17 @@ gates = {
     end,
 
     _get_gate_height = function(self, _d)
-        local _gh = 50 - (_d * 1.5)
-        return max(35, _gh)
+        local _offset = (_d - 1) * GATE_HEIGHT_INCREMENT
+        local _ghmax = max(GATE_BASE_MAX_HEIGHT - _offset, GATE_CLAMP_MAX_HEIGHT)
+        local _ghmin = max(GATE_BASE_MIN_HEIGHT - _offset, GATE_CLAMP_MIN_HEIGHT)
+        return rnd_between(_ghmin, _ghmax)
     end,
 
     _get_gate_width = function(self, _d)
-        local _gw = 20 - (_d * 2)
-        return max(40, _gw)
+        local _offset = (_d - 1) * GATE_WIDTH_INCREMENT
+        local _gwmax = min(GATE_BASE_MAX_WIDTH + _offset, GATE_CLAMP_MAX_WIDTH)
+        local _gwmin = min(GATE_BASE_MIN_WIDTH + _offset, GATE_CLAMP_MIN_WIDTH)
+        return rnd_between(_gwmin, _gwmax)
     end,
 
     _check_collided = function(self, _gt, _pl)
