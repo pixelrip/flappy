@@ -9,7 +9,7 @@ Some notes on how I'm thinking about difficulty in this game.
 3. Gate width (wider = more difficult)
 4. Gate spawn timer / distance between gates (smaller = more difficult)
 
-# Overall Difficulty Factor
+## Overall Difficulty Factor
 
 The approach I've taken is to have a `base_difficulty` property in my main `game` object that acts as a multiplyer for the various "levers." 
 
@@ -25,7 +25,7 @@ game.base_difficulty = 1 + flr(game.score / DIFFICULTY_INCREASE_RATE)
 -- game.score = 50 -> game.difficulty = 6
 ```
 
-# Difficulty Spikes
+## Difficulty Spikes
 In order to keep the game from feeling too linear, I've introduced temporary difficulty spikes on a simple timer.
 
 ```lua
@@ -39,7 +39,7 @@ game.base_difficulty + game.spike_modifier
 ```
 
 
-# Lever 1: Game Speed
+## Lever 1: Game Speed
 
 The overall game speed also exists inside the main game object. It is a measure of pixels per frame (moving on the x axis). The speed is NOT imacted by the difficulty spikes (it feels far too unnatural).
 
@@ -63,9 +63,41 @@ gate.x -= game.get_speed()
 ```
 
 
-# Lever 2: Gate Height
+## Lever 2: Gate Size (Height and Width)
 
-The "height" of the gate 
+I want the gates generation to feel variable, but scale that variability with the difficulty.
+
+```lua
+-- /src/constants.lua
+GATE_BASE_MAX_HEIGHT = 60
+GATE_BASE_MIN_HEIGHT = 40
+GATE_BASE_MAX_WIDTH = 40
+GATE_BASE_MIN_WIDTH = 10
+GATE_HEIGHT_INCREMENT = 2
+GATE_WIDTH_INCREMENT = 2
+GATE_CLAMP_MAX_HEIGHT = 40
+GATE_CLAMP_MIN_HEIGHT = 20
+GATE_CLAMP_MAX_WIDTH = 60
+GATE_CLAMP_MIN_WIDTH = 30
+
+-- /src/gates.lua
+_get_gate_height = function(self, difficulty)
+    local _offset = (difficulty - 1) * GATE_HEIGHT_INCREMENT
+    local _ghmax = max(GATE_BASE_MAX_HEIGHT - _offset, GATE_CLAMP_MAX_HEIGHT)
+    local _ghmin = max(GATE_BASE_MIN_HEIGHT - _offset, GATE_CLAMP_MIN_HEIGHT)
+    return rnd_between(_ghmin, _ghmax)
+end
+
+_get_gate_width = function(self, difficulty)
+    local _offset = (difficulty - 1) * GATE_WIDTH_INCREMENT
+    local _gwmax = min(GATE_BASE_MAX_WIDTH + _offset, GATE_CLAMP_MAX_WIDTH)
+    local _gwmin = min(GATE_BASE_MIN_WIDTH + _offset, GATE_CLAMP_MIN_WIDTH)
+    return rnd_between(_gwmin, _gwmax)
+end
+
+This is the first draft that does not include any "fairness" checks, but needs to be considered during playtesting.
+
+```
 
 
 # Ensuring Fairness
