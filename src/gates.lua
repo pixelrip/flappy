@@ -130,17 +130,17 @@ gates = {
     _check_collided = function(self, _gt, _pl)
         -- Check that _pl(ayer) is _safe
         -- _gt (gate)
-        -- FIX: Using _pl sprite height; make hitbox
+        -- TODO: FIX: Using _pl sprite height/width magic number 13/17; make hitbox
         local _safe = false
 
         if not _gt.passed then
-            if _pl.x + _pl.sw < _gt.x then 
+            if _pl.x + 17 < _gt.x then 
                 _safe = true
             elseif _pl.x > _gt.x + _gt.w then 
                 _safe = true
                 _gt.passed = true
                 game:add_score(1)
-            elseif _pl.y > _gt.y and _pl.y + _pl.sh < _gt.y + _gt.h then 
+            elseif _pl.y > _gt.y and _pl.y + 13 < _gt.y + _gt.h then 
                 _safe = true
             end
         else

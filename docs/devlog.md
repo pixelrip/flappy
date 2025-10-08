@@ -3,14 +3,16 @@ Total Time: 9hrs
 
 ## Day 3: 2025-10-08
 
-- Pomodoros: X X X X - X X _ _ _ _
+- Pomodoros: X X X X - X X X X - X _
 - Continue work on difficulty slope
     - Updating notes/thoughts in `difficulty.md`
     - Randomize gate sizing (w/h) scaled with difficulty
     - Simplified Y placement for now
     - Gate spawn time more dynamic
 - On screen debugging
-
+- Created a "moving" floor
+- Updated `draw_sprite` to accept a transparent color number
+- Add bird sprites to spritesheet
 
 
 ## Day 2: 2025-09-29
