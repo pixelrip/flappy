@@ -1,9 +1,9 @@
 # Dev Log
-Total Time: 9hrs
+Total Time: 14hrs
 
 ## Day 3: 2025-10-08
 
-- Pomodoros: X X X X - X X X X - X _
+- Time worked 5hrs
 - Continue work on difficulty slope
     - Updating notes/thoughts in `difficulty.md`
     - Randomize gate sizing (w/h) scaled with difficulty
@@ -13,6 +13,8 @@ Total Time: 9hrs
 - Created a "moving" floor
 - Updated `draw_sprite` to accept a transparent color number
 - Add bird sprites to spritesheet
+- EOD status: WIP on player sprite
+    - State currently working but sprite position is always 0,0
 
 
 ## Day 2: 2025-09-29
