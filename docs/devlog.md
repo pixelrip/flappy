@@ -1,6 +1,14 @@
 # Dev Log
 Total Time: 14hrs
 
+
+## Day 4: 2025-10-09
+
+- Pomodoros: X X _ _ - _ _ _ _
+- [x] Finish sprite states
+- [x] Pipe art rendering
+- [ ] Player hitbox
+
 ## Day 3: 2025-10-08
 
 - Time worked 5hrs
