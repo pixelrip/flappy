@@ -24,8 +24,7 @@ gates = {
 
     draw = function(self)
         for _gt in all(self.list) do
-            rrectfill(_gt.x,0,_gt.w,_gt.y,0,3)
-            rrectfill(_gt.x,_gt.y+_gt.h,_gt.w,128,0,3)
+            self:_draw_gate(_gt)
             
             -- DEBUG
             if DEBUG then
@@ -153,5 +152,32 @@ gates = {
             return true
         end
     end,
+
+    _draw_gate = function(self, _gt)
+        _x = _gt.x
+        _y = _gt.y
+        _w = _gt.w
+        _h = _gt.h
+
+        -- Green tubes
+        rrectfill(_x,0,_w,_y,0,3) --top
+        rrectfill(_x,_y+_h,_w,128,0,3) --bottom
+        -- Green tube highlights
+        rrectfill(_x+2,0,2,_y,0,11) --top
+        rrectfill(_x+2,_y+_h,2,128,0,11) --bottom
+        -- Black outlines
+        rrect(_x,-1,_w,_y+1,0,0) --top
+        rrect(_x,_y+_h,_w,128,0,0) --bottom
+
+        -- Top Cap
+        rrectfill(_x-2,_y-12,_w+4,12,1,3) --green
+        rrectfill(_x,_y-12,2,12,0,11) --highlights
+        rrect(_x-2,_y-12,_w+4,12,1,0) --outline
+
+        -- Bottom Cap
+        rrectfill(_x-2,_y+_h,_w+4,12,1,3) --green
+        rrectfill(_x,_y+_h,2,12,0,11) --highlights
+        rrect(_x-2,_y+_h,_w+4,12,1,0) --outline
+    end
 }
 
