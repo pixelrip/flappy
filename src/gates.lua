@@ -159,7 +159,7 @@ gates = {
         _w = _gt.w
         _h = _gt.h
 
-        -- FIX: Token (and performance? and magic number) nightmare; could be optimited
+        -- FIX: Token (and performance... and magic number..) nightmare; could be optimited
         -- Green tubes
         rrectfill(_x,0,_w,_y-11,0,3) --top tube
         rrectfill(_x,_y+_h+11,_w,128,0,3) --bottom tube
