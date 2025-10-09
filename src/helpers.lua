@@ -4,11 +4,11 @@ function log(txt)
     printh(txt, "log.p8l")
 end
 
-function draw_sprite(obj)
+function draw_sprite(x,y,obj)
     local _sa = obj.sa or 0
     palt(0, false)
     palt(_sa, true)
-    sspr(obj.sx, obj.sy, obj.sw, obj.sh, obj.x, obj.y)
+    sspr(obj.sx, obj.sy, obj.sw, obj.sh, x, y)
     pal()
 end
 

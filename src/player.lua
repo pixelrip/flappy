@@ -2,27 +2,29 @@ player = {
     -- pos
     x = 10,
     y = 60,
-    -- sprite states (token inefficient but whatever)
-    idle = {
-        sx = 34,
-        sy = 0,
-        sw = 17,
-        sh = 13,
-        sa = 12,
-    },
-    wing_up = {
-        sx = 0,
-        sy = 0,
-        sw = 17,
-        sh = 13,
-        sa = 12,
-    },
-    wing_down = {
-        sx = 17,
-        sy = 0,
-        sw = 17,
-        sh = 13,
-        sa = 12,
+    -- sprite states (token inefficient but whatever for now)
+    sprite ={
+        idle = {
+            sx = 34,
+            sy = 0,
+            sw = 17,
+            sh = 13,
+            sa = 12,
+        },
+        wing_up = {
+            sx = 0,
+            sy = 0,
+            sw = 17,
+            sh = 13,
+            sa = 12,
+        },
+        wing_down = {
+            sx = 17,
+            sy = 0,
+            sw = 17,
+            sh = 13,
+            sa = 12,
+        },
     },
     -- vel
     vy = 0,
@@ -48,7 +50,7 @@ player = {
             self.vy = max(P_MAX_VY_UP, self.vy + P_FLAP)
 
             self.anim_state = "wing_up"
-            self.anim_timer = 2 --frames
+            self.anim_timer = 1 --frames 
         elseif not btn(5) then
             self.btn_pressed = false
         end
@@ -68,7 +70,7 @@ player = {
     end,
 
     draw = function(self)
-        draw_sprite(self[self.anim_state])
+        draw_sprite(self.x, self.y, self.sprite[self.anim_state])
 
         -- DEBUG
         if DEBUG then
