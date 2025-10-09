@@ -17,7 +17,7 @@ Total Time: 14hrs
 
 ### Day 4: 2025-10-09
 
-- Pomodoros: X X X _ - _ _ _ _
+- Pomodoros: X X X X - _ _ _ _
 - [x] Finish sprite states
 - [x] Pipe art rendering
 - [x] Player hitbox refactor
