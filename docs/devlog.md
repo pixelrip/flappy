@@ -1,5 +1,5 @@
 # Dev Log
-Total Time: 14hrs
+Total Time: 17hrs
 
 ### TODO:
 - [ ] Mountains background (parallax)
@@ -17,15 +17,15 @@ Total Time: 14hrs
 
 ### Day 4: 2025-10-09
 
-- Pomodoros: X X X X - _ _ _ _
+- Time worked: 3hrs
 - [x] Finish sprite states
 - [x] Pipe art rendering
 - [x] Player hitbox refactor
-- [ ] Sky and clouds background (parallax)
+- [x] Sky and clouds background (parallax)
 
 ### Day 3: 2025-10-08
 
-- Time worked 5hrs
+- Time worked: 5hrs
 - Continue work on difficulty slope
     - Updating notes/thoughts in `difficulty.md`
     - Randomize gate sizing (w/h) scaled with difficulty
