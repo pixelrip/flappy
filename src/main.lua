@@ -1,11 +1,13 @@
 function _init()
 	log("=== flappy started ===")
 	gates:init()
+	clouds:init()
 end
 
 function _update()
 	if game.state == "playing" then
 		game:update_spike()
+		clouds:update()
 		player:update()
 		gates:update(player)
 		floor:update()
@@ -19,6 +21,7 @@ end
 
 function _draw()
 	cls(12)
+	clouds:draw()
 	player:draw()
 	gates:draw()
 	floor:draw()

@@ -7,6 +7,7 @@ __lua__
 #include src/player.lua
 #include src/gates.lua
 #include src/floor.lua
+#include src/clouds.lua
 #include src/main.lua
 
 __gfx__
