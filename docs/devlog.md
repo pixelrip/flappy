@@ -2,13 +2,14 @@
 Total Time: 14hrs
 
 ### TODO:
-- [ ] Mountains background
+- [ ] Mountains background (parallax)
 - [ ] SFX: Flapping, collisions, point scored
 - [ ] Title screen
 - [ ] High score tracking
 - [ ] Game over screen
 - [ ] Music: Title
 - [ ] Music: Gameplay
+- [ ] Level progression (mountains -> city -> desert -> trees)
 
 ---
 
@@ -20,7 +21,7 @@ Total Time: 14hrs
 - [x] Finish sprite states
 - [x] Pipe art rendering
 - [x] Player hitbox refactor
-- [ ] Sky and clouds background
+- [ ] Sky and clouds background (parallax)
 
 ### Day 3: 2025-10-08
 

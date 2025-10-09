@@ -18,7 +18,7 @@ function _update()
 end
 
 function _draw()
-	cls(1)
+	cls(12)
 	player:draw()
 	gates:draw()
 	floor:draw()
