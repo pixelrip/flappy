@@ -26,8 +26,18 @@ player = {
             sa = 12,
         },
     },
+    
     -- vel
     vy = 0,
+
+    -- hitbox
+    hitbox = {
+        x_off = 4,
+        y_off = 2,
+        w = 9,
+        h = 10,
+    },
+
     -- player input state
     btn_pressed = false,
 
@@ -75,8 +85,18 @@ player = {
         -- DEBUG
         if DEBUG then
             print("vy: "..self.vy, self.x+1, self.y-10, 10)
+            self:_draw_hitbox()
         end
     end, 
+
+    get_bounds = function(self)
+        return {
+            x1 = self.x + self.hitbox.x_off,
+            y1 = self.y + self.hitbox.y_off,
+            x2 = self.x + self.hitbox.x_off + self.hitbox.w,
+            y2 = self.y + self.hitbox.y_off + self.hitbox.h,
+        }
+    end,
 
     -- "Private" methods
     _update_animation = function(self)
@@ -94,5 +114,10 @@ player = {
         else
             self.anim_state = "idle"
         end
-    end
+    end,
+
+    _draw_hitbox = function(self)
+        local b = self:get_bounds()
+        rect(b.x1, b.y1, b.x2, b.y2, 10)
+    end,
 }
