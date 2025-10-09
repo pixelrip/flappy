@@ -1,15 +1,28 @@
 # Dev Log
 Total Time: 14hrs
 
+### TODO:
+- [ ] Mountains background
+- [ ] SFX: Flapping, collisions, point scored
+- [ ] Title screen
+- [ ] High score tracking
+- [ ] Game over screen
+- [ ] Music: Title
+- [ ] Music: Gameplay
 
-## Day 4: 2025-10-09
+---
 
-- Pomodoros: X X _ _ - _ _ _ _
+## Daily Notes
+
+### Day 4: 2025-10-09
+
+- Pomodoros: X X X _ - _ _ _ _
 - [x] Finish sprite states
 - [x] Pipe art rendering
-- [ ] Player hitbox
+- [x] Player hitbox refactor
+- [ ] Sky and clouds background
 
-## Day 3: 2025-10-08
+### Day 3: 2025-10-08
 
 - Time worked 5hrs
 - Continue work on difficulty slope
@@ -25,7 +38,7 @@ Total Time: 14hrs
     - State currently working but sprite position is always 0,0
 
 
-## Day 2: 2025-09-29
+### Day 2: 2025-09-29
 
 - Time worked: 4hrs
 - Code review/small refactors
@@ -39,7 +52,7 @@ Total Time: 14hrs
     - Gate width: Broken
 
 
-## Day 1: 2025-09-28
+### Day 1: 2025-09-28
 
 - Time worked: 5hrs
 - Created temporary simple player sprite
