@@ -1,8 +1,9 @@
 # Dev Log
-Total Time: 17hrs
+Total Time: 24hrs
 
 ### TODO:
 - [ ] Title screen
+- [ ] Update README.md with theme/thanks
 - [ ] High score tracking
 - [ ] Game over screen
 - [ ] Music: Title
@@ -20,7 +21,7 @@ Total Time: 17hrs
 - [x] Mountains background w/ parallax
 - [x] SFX: Flapping, collisions, point scored
 - Chasing an potentially funny aestetic wild hair based on "Papers Please"
-- Ok, it was worth it event though I'm scrapping half the days work: [Mockup](/art/flappy-arstotzka.png)
+- Ok, it was worth it. [Mockup](/art/flappy-arstotzka.png)
 
 
 
