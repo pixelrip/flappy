@@ -21,7 +21,7 @@ clouds = {
     end,
 
     update = function(self)
-        local _s = game:get_speed()/4
+        local _s = game:get_speed()/12
 
         self:_move_clouds(_s)
         self:_cloud_spawner(_s)
