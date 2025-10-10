@@ -58,6 +58,8 @@ gates = {
 
             -- Check for collisions with _pl
             if self:_check_collided(_gt, _pl) then
+                sfx(1) -- hit sound
+                sfx(3) -- game_over
                 game:switch_state("game_over")
             end
             
@@ -149,6 +151,7 @@ gates = {
         -- Log the collision for now
         if not _safe then
             log("_check_collided(): true")
+
             return true
         end
     end,

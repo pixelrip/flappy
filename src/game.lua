@@ -26,6 +26,7 @@ game = {
     end,
     
     add_score = function(self, _ps)
+        sfx(2) -- score sound
         self.score += _ps
         self.base_difficulty = 1 + flr(self.score / DIFFICULTY_INCREASE_RATE)
         log("add_score(): score=" .. self.score .. " base_difficulty=" .. self.base_difficulty)

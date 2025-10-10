@@ -61,6 +61,7 @@ player = {
 
             self.anim_state = "wing_up"
             self.anim_timer = 1 --frames 
+            sfx(0) -- flap sound
         elseif not btn(5) then
             self.btn_pressed = false
         end
