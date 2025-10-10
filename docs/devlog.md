@@ -2,8 +2,6 @@
 Total Time: 17hrs
 
 ### TODO:
-- [ ] Mountains background (parallax)
-- [ ] SFX: Flapping, collisions, point scored
 - [ ] Title screen
 - [ ] High score tracking
 - [ ] Game over screen
@@ -14,6 +12,14 @@ Total Time: 17hrs
 ---
 
 ## Daily Notes
+
+### Day 5: 2025-10-10 
+
+- Pomodoros: X X X X - X X _ _ - _ _ _ _
+- [x] Mountains background w/ parallax
+- [x] SFX: Flapping, collisions, point scored
+- 
+
 
 ### Day 4: 2025-10-09
 
