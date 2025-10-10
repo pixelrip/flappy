@@ -8,6 +8,7 @@ Total Time: 17hrs
 - [ ] Music: Title
 - [ ] Music: Gameplay
 - [ ] Level progression (mountains -> city -> desert -> trees)
+- [ ] Title screen
 
 ---
 
@@ -15,10 +16,12 @@ Total Time: 17hrs
 
 ### Day 5: 2025-10-10 
 
-- Pomodoros: X X X X - X X _ _ - _ _ _ _
+- Time worked: 7hrs
 - [x] Mountains background w/ parallax
 - [x] SFX: Flapping, collisions, point scored
-- 
+- Chasing an potentially funny aestetic wild hair based on "Papers Please"
+- Ok, it was worth it event though I'm scrapping half the days work: [Mockup](/art/flappy-arstotzka.png)
+
 
 
 ### Day 4: 2025-10-09
