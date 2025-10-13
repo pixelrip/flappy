@@ -1,5 +1,5 @@
 # Dev Log
-Total Time: 24hrs
+Total Time: 27.5hrs
 
 ### TODO:
 - [ ] Title screen
@@ -14,6 +14,13 @@ Total Time: 24hrs
 ---
 
 ## Daily Notes
+
+### Day 6: 2025-10-13
+- Time worked: 3.5hrs
+- Polish graphics for title screen
+- Testing and implementing "Secret" color pallet in game
+- Fix: Bird sprite
+- WIP: Implementing ground, fence, cracks, barbed wire
 
 ### Day 5: 2025-10-10 
 
