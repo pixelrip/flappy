@@ -17,7 +17,7 @@ clouds = {
     -- "Public" methods
 
     init = function(self)
-        -- 2 initial clouds
+        -- TODO: 2 initial clouds
     end,
 
     update = function(self)
