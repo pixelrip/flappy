@@ -9,7 +9,7 @@ function draw_sprite(x,y,obj)
     palt(0, false)
     palt(_sa, true)
     sspr(obj.sx, obj.sy, obj.sw, obj.sh, x, y)
-    pal()
+    reset_pal()
 end
 
 function rnd_between(min, max)
@@ -20,4 +20,9 @@ function print_centered(txt, y, col)
     local txt_width = #txt * 4
     local x = (128 - txt_width) / 2
     print(txt, x, y, col)
+end
+
+function reset_pal()
+    pal()
+    pal( custom_palette, 1 )
 end
