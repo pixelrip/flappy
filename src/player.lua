@@ -5,24 +5,24 @@ player = {
     -- sprite states (token inefficient but whatever for now)
     sprite ={
         idle = {
-            sx = 34,
-            sy = 0,
-            sw = 17,
-            sh = 13,
+            sx = 0,
+            sy = 15,
+            sw = 19,
+            sh = 15,
             sa = 12,
         },
         wing_up = {
             sx = 0,
             sy = 0,
-            sw = 17,
-            sh = 13,
+            sw = 19,
+            sh = 15,
             sa = 12,
         },
         wing_down = {
-            sx = 17,
+            sx = 19,
             sy = 0,
-            sw = 17,
-            sh = 13,
+            sw = 19,
+            sh = 15,
             sa = 12,
         },
     },
@@ -32,8 +32,8 @@ player = {
 
     -- hitbox
     hitbox = {
-        x_off = 4,
-        y_off = 2,
+        x_off = 5,
+        y_off = 3,
         w = 9,
         h = 10,
     },
