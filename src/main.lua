@@ -18,8 +18,8 @@ function _update()
 		clouds:update()
 		mountains:update()
 		player:update()
-		gates:update(player)
 		floor:update()
+		gates:update(player)
 	elseif game.state == "game_over" then
 		if btnp(4) then
 			game:reset()
@@ -32,10 +32,9 @@ function _draw()
 	cls(15)
 	clouds:draw()
 	mountains:draw()
-	player:draw()
-	gates:draw()
 	floor:draw()
-
+	gates:draw()
+	player:draw()
 	print(game.score, 2, 122, 7)
 
 	if game.state == "game_over" then

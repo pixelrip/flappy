@@ -5,6 +5,7 @@
 
 gates = {
 
+    DEBUG = false, 
     list = {},
     spawn_timer = 0,
     next_gate = 0,
@@ -27,17 +28,17 @@ gates = {
             self:_draw_gate(_gt)
             
             -- DEBUG
-            if DEBUG then
-                print("y: ".._gt.y, _gt.x+1, _gt.y-18, 10)
-                print("w: ".._gt.w, _gt.x+1, _gt.y-12, 10)
-                print("h: ".._gt.h, _gt.x+1, _gt.y-6, 10)
-                print("s: "..game:get_speed(), _gt.x+1, _gt.y+_gt.h+2, 10)
-                print("b: "..game.base_difficulty, _gt.x+1, _gt.y+_gt.h+8, 10)
-                print("d: "..game:get_effective_difficulty(), _gt.x+1, _gt.y+_gt.h+14, 10)
+            if self.DEBUG then
+                print("y: ".._gt.y, _gt.x+1, _gt.y-18, 7)
+                print("w: ".._gt.w, _gt.x+1, _gt.y-12, 7)
+                print("h: ".._gt.h, _gt.x+1, _gt.y-6, 7)
+                print("s: "..game:get_speed(), _gt.x+1, _gt.y+_gt.h+2, 7)
+                print("b: "..game.base_difficulty, _gt.x+1, _gt.y+_gt.h+8, 7)
+                print("d: "..game:get_effective_difficulty(), _gt.x+1, _gt.y+_gt.h+14, 7)
 
-                print("mx: ".._gt.debug_max_gap, _gt.x+_gt.w+20, _gt.y-18, 10)
-                print("mn: ".._gt.debug_min_gap, _gt.x+_gt.w+20, _gt.y-12, 10)
-                print("g: ".._gt.debug_gap, _gt.x+_gt.w+20, _gt.y-6, 10)
+                print("mx: ".._gt.debug_max_gap, _gt.x+_gt.w+20, _gt.y-18, 7)
+                print("mn: ".._gt.debug_min_gap, _gt.x+_gt.w+20, _gt.y-12, 7)
+                print("g: ".._gt.debug_gap, _gt.x+_gt.w+20, _gt.y-6, 7)
             end
 
         end
@@ -110,15 +111,15 @@ gates = {
 
     end,
     
-    _get_gate_y = function(self, _d, _h)
-        return rnd_between(16, 112 - _h)
-    end,
-
     _get_gate_height = function(self, _d)
         local _offset = (_d - 1) * GATE_HEIGHT_INCREMENT
         local _ghmax = max(GATE_BASE_MAX_HEIGHT - _offset, GATE_CLAMP_MAX_HEIGHT)
         local _ghmin = max(GATE_BASE_MIN_HEIGHT - _offset, GATE_CLAMP_MIN_HEIGHT)
         return rnd_between(_ghmin, _ghmax)
+    end,
+    
+    _get_gate_y = function(self, _d, _h)
+        return rnd_between(28, 101 - _h)
     end,
 
     _get_gate_width = function(self, _d)
@@ -162,8 +163,83 @@ gates = {
         _w = _gt.w
         _h = _gt.h
 
+        local _bx0 = _x
+        local _by0 = 0
+        local _bx1 = _x + _w
+        local _by1 = _y
+
+        local _gx0 = _x
+        local _gy0 = _y + _h
+        local _gx1 = _x + _w
+        local _gy1 = 119
+
+        local _banner_sprite = {sx=51, sy=32, sw=21, sh=16}
+        local _gate_sprite = {sx=51, sy=22, sw=19, sh=10, sa=12}
+
+        -- Banner
+        rectfill(_bx0,_by0,_bx1,_by1,8) -- red base
+        rect(_bx0,-1,_bx1,_by1,0) -- black outline
+        rect(_bx1,0,_bx1+1,_by1,0) -- shadow
+        rect(_bx0+1,-1,_bx1-1,_by1-1,14) --pink outline
+        draw_sprite(_bx0+(_w-21)/2, _by1-17, _banner_sprite)
+        
+
+        -- Gate
+        rectfill(_gx0,_gy0,_gx1,_gy1,6) -- base grey
+
+        -- Bricks
+        local _bxh = max(0, _gy1 - _gy0 - 19)
+        local _rows = flr(_bxh / 10)
+        local _rem = _bxh % 10 + 1
+        local _bxy = _gy0 + 19
+
+        if _rows > 0 then
+            for i = 1, _rows do
+                draw_sprite(
+                    _gx0,
+                    _bxy,
+                    {
+                        sx=69, 
+                        sy=22, 
+                        sw=_w, 
+                        sh=10, 
+                        sa=12
+                    })
+                _bxy += 10
+            end
+        end
+        if _rem > 0 then
+            draw_sprite(
+                _gx0,
+                _bxy,
+                {
+                    sx=69, 
+                    sy=22, 
+                    sw=_w, 
+                    sh=_rem, 
+                    sa=12
+                })
+        end
+
+
+
+        rect(_gx0+1,_gy0+1,_gx1,_gy0+19,7) -- white accent
+        rect(_gx0,_gy0,_gx1,_gy1+1,0) -- black outline
+        line(_gx0,_gy0+19,_gx1,_gy0+19,0) 
+        line(_gx1+1,_gy0,_gx1+1,_gy1,0)
+        rrectfill(_gx0+4,_gy0+4,_w-7,12,1,0) -- window
+        draw_sprite(_gx0+(_w-19)/2, _gy0+6, _gate_sprite)
+
+        -- Gate Shadow
+        if _gy0 < 96 then
+            rrectfill(_gx1+2, 96, 7, 24, 0, 3) 
+        else
+            rectfill(_gx1+2, _gy0+1, _gx1+8, _gy1, 3)
+        end
+        
+
         -- FIX: Token (and performance... and magic number..) nightmare; could be optimited
-        -- Green tubes
+        --[[ Green tubes
         rrectfill(_x,0,_w,_y-11,0,3) --top tube
         rrectfill(_x,_y+_h+11,_w,128,0,3) --bottom tube
         rrectfill(_x-2,_y-11,_w+4,10,1,3) -- top cap
@@ -187,6 +263,7 @@ gates = {
         rrect(_x,_y+_h+11,_w,128,0,0) --bottom tube outline
         rrect(_x-2,_y-11,_w+4,11,1,0) --top cap outline
         rrect(_x-2,_y+_h,_w+4,11,1,0) --bottom cap outline
+        ]]--
 
     end
 }
