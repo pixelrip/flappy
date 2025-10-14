@@ -1,4 +1,4 @@
-mountains = {
+buildings = {
 
     -- FIX: Theres gotta be a better way to do this
     layers = {},
@@ -7,9 +7,9 @@ mountains = {
 
     init = function(self)
 
-        -- Create mountain layers
+        -- Create building layers
         add(self.layers, {
-            mountains = {},
+            buildings = {},
             speed = game:get_speed()/6,
             color = 2,
             cap_max = 0,
@@ -20,7 +20,7 @@ mountains = {
         })
 
         add(self.layers, {
-            mountains = {},
+            buildings = {},
             speed = game:get_speed()/4,
             color = 13,
             cap_max = 16,
@@ -29,7 +29,7 @@ mountains = {
             size_min = 48,
         })
 
-        -- Spawn initial mountains
+        -- Spawn initial buildings
         for _l in all(self.layers) do
             self:_init_layer(_l)
         end
@@ -43,8 +43,8 @@ mountains = {
 
     draw = function(self)
         for _l in all(self.layers) do
-            for _m in all(_l.mountains) do
-                self:_draw_mountain(_m)
+            for _m in all(_l.buildings) do
+                self:_draw_building(_m)
             end
         end
     end,
@@ -67,7 +67,7 @@ mountains = {
             end
 
             -- TODO: DRY this up with _update_layer
-            add(layer.mountains, {
+            add(layer.buildings, {
                 x = _x,
                 size = _size,
                 cap = rnd_between(layer.cap_min, layer.cap_max),
@@ -77,25 +77,25 @@ mountains = {
     end,
 
     _update_layer = function(self, layer)
-        -- Move all mountains
-        for mountain in all(layer.mountains) do
-            mountain.x -= layer.speed
+        -- Move all buildings
+        for building in all(layer.buildings) do
+            building.x -= layer.speed
         end
 
-        -- Check if leftmost mountain is off screen
-        local leftmost = layer.mountains[1]
+        -- Check if leftmost building is off screen
+        local leftmost = layer.buildings[1]
 
         if leftmost.x and leftmost.x < -leftmost.size * 2 then
-            -- Remove leftmost mountain
-            del(layer.mountains, leftmost)
+            -- Remove leftmost building
+            del(layer.buildings, leftmost)
 
-            -- Add new mountain to the right
-            local rightmost = layer.mountains[#layer.mountains]
+            -- Add new building to the right
+            local rightmost = layer.buildings[#layer.buildings]
             local _size = rnd_between(layer.size_min, layer.size_max)
             local _x = rightmost.x + flr(rightmost.size * 1.75)
 
             -- TODO: DRY this up with _init_layer
-            add(layer.mountains, {
+            add(layer.buildings, {
                 x = _x,
                 size = _size,
                 cap = rnd_between(layer.cap_min, layer.cap_max),
@@ -105,7 +105,7 @@ mountains = {
 
     end,
 
-    _draw_mountain = function(self, opts)
+    _draw_building = function(self, opts)
         opts = opts or {}
         local _size = opts.size or 42
         local _x = opts.x or 0
@@ -118,7 +118,7 @@ mountains = {
             local _y0 = 128 - i
             local _y1 = 128
 
-            -- Draw mountain sides
+            -- Draw building sides
             line(_lx, _y0, _lx, _y1, _color)
             line(_rx, _y0, _rx, _y1, _color)
 

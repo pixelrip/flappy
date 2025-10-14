@@ -8,7 +8,7 @@ __lua__
 #include src/gates.lua
 #include src/floor.lua
 #include src/clouds.lua
-#include src/mountains.lua
+#include src/buildings.lua
 #include src/main.lua
 
 __gfx__

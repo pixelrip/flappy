@@ -9,14 +9,14 @@ function _init()
 	-- init game "modules"
 	gates:init()
 	clouds:init()
-	mountains:init()
+	buildings:init()
 end
 
 function _update()
 	if game.state == "playing" then
 		game:update_spike()
 		clouds:update()
-		mountains:update()
+		buildings:update()
 		player:update()
 		floor:update()
 		gates:update(player)
@@ -31,7 +31,7 @@ end
 function _draw()
 	cls(15)
 	clouds:draw()
-	mountains:draw()
+	buildings:draw()
 	floor:draw()
 	gates:draw()
 	player:draw()
