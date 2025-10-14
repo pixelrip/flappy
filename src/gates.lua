@@ -236,34 +236,6 @@ gates = {
         else
             rectfill(_gx1+2, _gy0+1, _gx1+8, _gy1, 3)
         end
-        
-
-        -- FIX: Token (and performance... and magic number..) nightmare; could be optimited
-        --[[ Green tubes
-        rrectfill(_x,0,_w,_y-11,0,3) --top tube
-        rrectfill(_x,_y+_h+11,_w,128,0,3) --bottom tube
-        rrectfill(_x-2,_y-11,_w+4,10,1,3) -- top cap
-        rrectfill(_x-2,_y+_h,_w+4,10,1,3) --bottom cap
-        
-        -- Highlights
-        fillp(3855)
-        rrectfill(_x+2,0,1,_y-11,0,59) --top tube highlight
-        rrectfill(_x+2,_y+_h+11,1,128,0,59) --bottom tube highlight
-        rrectfill(_x,_y-11,1,11,0,59) -- top cap highlight
-        rrectfill(_x,_y+_h,1,11,0,59) -- bottom cap highlight
-        fillp()
-
-        rrectfill(_x+3,0,1,_y-11,0,59) --top tube highlight
-        rrectfill(_x+3,_y+_h+11,1,128,0,59) --bottom tube highlight
-        rrectfill(_x+1,_y-11,1,11,0,59) -- top cap highlight
-        rrectfill(_x+1,_y+_h,1,11,0,59) -- bottom cap highlight
-        
-        -- Black outlines
-        rrect(_x,-1,_w,_y-10,0,0) -- top tube outline
-        rrect(_x,_y+_h+11,_w,128,0,0) --bottom tube outline
-        rrect(_x-2,_y-11,_w+4,11,1,0) --top cap outline
-        rrect(_x-2,_y+_h,_w+4,11,1,0) --bottom cap outline
-        ]]--
 
     end
 }
