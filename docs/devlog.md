@@ -1,7 +1,9 @@
 # Dev Log
-Total Time: 27.5hrs
+Total Time: 32.5hrs
 
 ### TODO:
+
+- [ ] Bug: Gate shadow disappears too early
 - [ ] Title screen
 - [ ] Update README.md with theme/thanks
 - [ ] High score tracking
@@ -11,11 +13,26 @@ Total Time: 27.5hrs
 - [ ] Level progression (mountains -> city -> desert -> trees)
 - [ ] Title screen
 
+**Potental Token Savings (Only if Needed)**
+- [ ] DRY up cloud + fence
+- [ ] String/split fence sprite data (all sprite data?)
+- [ ] Delete DEBUGs
+
 ---
 
 ## Daily Notes
 
+### Day 7: 2025-10-14
+
+- Time worked: 5hrs
+- Implemented ground and fence visuals
+- Implemented gate visuals: banner, checkpoint/gate, shadow, bricks, etc
+- Implemented synamic buildings and windows
+- Updated clouds to appear above buildings
+- Quick analysis: I've spent about 15 hours (~50% of current time, %25 of total project) on the visual elements of the gameplay. I don't have title states done, but this is good to note for future projects. Up next: title screen.
+
 ### Day 6: 2025-10-13
+
 - Time worked: 3.5hrs
 - Polish graphics for title screen
 - Testing and implementing "Secret" color pallet in game
@@ -29,8 +46,6 @@ Total Time: 27.5hrs
 - [x] SFX: Flapping, collisions, point scored
 - Chasing an potentially funny aestetic wild hair based on "Papers Please"
 - Ok, it was worth it. [Mockup](/art/flappy-arstotzka.png)
-
-
 
 ### Day 4: 2025-10-09
 
@@ -54,7 +69,6 @@ Total Time: 27.5hrs
 - Add bird sprites to spritesheet
 - EOD status: WIP on player sprite
     - State currently working but sprite position is always 0,0
-
 
 ### Day 2: 2025-09-29
 
