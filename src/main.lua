@@ -29,7 +29,7 @@ function _update()
 end
 
 function _draw()
-	cls(5)
+	cls(15)
 	clouds:draw()
 	mountains:draw()
 	player:draw()

@@ -55,7 +55,7 @@ clouds = {
 
         if self.spawn_timer > self.next_cloud then
             self.spawn_timer = 0
-            self.next_cloud = rnd_between(64/_s, 128/_s)
+            self.next_cloud = rnd_between(32/_s, 96/_s)
             self:_spawn_cloud()
         end
     end,
@@ -69,7 +69,8 @@ clouds = {
             sx = _d[1],
             sy = _d[2],
             sw = _d[3],
-            sh = _d[4]
+            sh = _d[4],
+            sa = 12
         })
 
         self.current_cloud += 1
@@ -79,6 +80,6 @@ clouds = {
     end,
 
     _draw_cloud = function(self, _cl)
-        sspr(_cl.sx, _cl.sy, _cl.sw, _cl.sh, _cl.x, _cl.y)
+        draw_sprite(_cl.x, _cl.y, _cl)
     end
 }

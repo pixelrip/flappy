@@ -32,12 +32,12 @@ floor = {
 
     cracks = {
         data = {
-            "38,0,13,15",
-            "29,15,7,9",
-            "36,15,6,9",
-            "42,15,9,20",
-            "19,21,10,9",
-            "29,24,13,11"
+            "38,0,13,15,12",
+            "29,15,7,9,12",
+            "36,15,6,9,12",
+            "42,15,9,20,12",
+            "19,21,10,9,12",
+            "29,24,13,11,12"
         },
         current = 1,
         spawn_timer = 0,
@@ -113,19 +113,18 @@ floor = {
         local _d = split(self.cracks.data[self.cracks.current], ",")
         local _y = 96
 
-        -- if statement for 50/50 choice
         if rnd() < 0.5 then
-           -- TODO: y offset to put crackt at bottom of fence
-           
+           _y = 120 - _d[4]       
         end
 
         add(self.cracks.list, {
             x = 128,
-            y = 96,
+            y = _y,
             sx = _d[1],
             sy = _d[2],
             sw = _d[3],
-            sh = _d[4]
+            sh = _d[4],
+            sa = _d[5]
         })
 
         self.cracks.current += 1
@@ -135,7 +134,7 @@ floor = {
     end,
 
     _draw_crack = function(self, _cr)
-        sspr(_cr.sx, _cr.sy, _cr.sw, _cr.sh, _cr.x, _cr.y)
+        draw_sprite(_cr.x, _cr.y, _cr)
     end
 
 
