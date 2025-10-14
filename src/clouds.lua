@@ -65,7 +65,7 @@ clouds = {
 
         add(self.list, {
             x = 128,
-            y = rnd_between(0, 64),
+            y = rnd_between(0, 32),
             sx = _d[1],
             sy = _d[2],
             sw = _d[3],
