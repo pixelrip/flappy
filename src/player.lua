@@ -20,9 +20,6 @@ player = {
         h = 10,
     },
 
-    -- player input state
-    btn_pressed = false,
-
     -- animation state
     anim_state = "idle",
     anim_timer = 0,
@@ -32,20 +29,15 @@ player = {
         self.x = P_START_X
         self.y = P_START_Y
         self.vy = 0
-        self.btn_pressed = false
     end,
 
     update = function(self)
         -- Check for button press
-        if btn(5) and not self.btn_pressed then
-            self.btn_pressed = true
+        if input:onpress(5) then
             self.vy = max(P_MAX_VY_UP, self.vy + P_FLAP)
-
             self.anim_state = "wing_up"
             self.anim_timer = 1 --frames 
             sfx(0) -- flap sound
-        elseif not btn(5) then
-            self.btn_pressed = false
         end
 
         -- Apply gravity

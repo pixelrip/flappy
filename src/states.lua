@@ -5,27 +5,48 @@ states = {}
 states.title = {
     anim_timer = 0,
     anim_y = 128,
-    anim_complete = false,
+    anim_state = "playing", -- "playing, complete, ready"
 
     init = function(self)
         -- Initialize title state
     end,
 
     update = function(self)
-        if self.anim_y > 16 then
-            self.anim_timer += 1
+        if self.anim_state == "playing" then
+            if self.anim_y > 16 then
+                self.anim_timer += 1
 
-            if self.anim_timer % 30 == 0 then
-                self.anim_y -= 8
+                if self.anim_timer % 30 == 0 then
+                    self.anim_y -= 8
+                end
+            else
+                self.anim_state = "complete"
             end
-        else 
-            self.anim_complete = true
+
+            for i = 0, 5 do
+                if input:onpress(i) then
+                    self.anim_state = "complete"
+                end
+            end
+            return
         end
 
-        if self.anim_complete then
-            if btnp(4)then -- Z or X key
+        if self.anim_state == "complete" then
+            self.anim_y = 16
+
+            for i = 0, 5 do
+                if input:onpress(i) then
+                    self.anim_state = "ready"
+                end
+            end
+            return
+        end
+
+        if self.anim_state == "ready" then
+            if input:onpress(4) then
                 switch_state(states.playing)
             end
+            return
         end
     end,
 
@@ -35,9 +56,11 @@ states.title = {
         font:print("FLAP", 12, self.anim_y + 28)
         font:print("programme", 12, self.anim_y + 56)
 
-        if self.anim_complete then
+        if self.anim_state == "complete" then
             print_centered("approved by the ministry", 93, 7)
             print_centered("of bird migration control", 100, 7)
+        elseif self.anim_state == "ready" then
+            print_centered("press 🅾️ to begin", 97, 7)
         end
     end
 }
@@ -77,7 +100,7 @@ states.game_over = {
     end,
 
     update = function(self)
-        if btnp(4) then 
+        if input:onpress(4) then 
             switch_state(states.playing)
         end
     end,

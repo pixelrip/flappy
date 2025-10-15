@@ -6,11 +6,12 @@ function _init()
 	custom_palette = {[0]=0,1,2,-16,4,5,6,7,8,9,-14,-13,12,13,14,-11}
 	reset_pal()
 
-	-- init game "modules"
+	input:init()
 	switch_state(states.title)
 end
 
 function _update()
+	input:update()
 	if current_state and current_state.update then
 		current_state:update()
 	end
