@@ -27,10 +27,11 @@ function rnd_between(min, max)
     return flr(rnd(max - min + 1)) + min
 end
 
-function print_centered(txt, y, col)
+function print_centered(txt, y, col, outline)
+    local outline = outline or ""
     local txt_width = #txt * 4
     local x = (128 - txt_width) / 2
-    print(txt, x, y, col)
+    print(outline..txt, x, y, col)
 end
 
 function reset_pal()

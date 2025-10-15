@@ -24,9 +24,13 @@ font = {
         local nx = x or 0
 
         for c in all(chars) do
-           local s = self[c]
-           draw_sprite(nx, y, s)
-           nx += s.sw + 2
+            if c == " " then
+                nx += 9
+            else
+                local s = self[c]
+                draw_sprite(nx, y, s)
+                nx += s.sw + 2
+            end
         end
     end,
 

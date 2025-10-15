@@ -112,9 +112,11 @@ states.game_over = {
         floor:draw()
         gates:draw()
         player:draw()
-        print("GAME OVER", 40, 40, 8)
-        print("Score: "..game.score, 45, 60, 7)
-        print("Press o to restart", 20, 80, 7)
+
+        font:print("game over", 14, 56)
+        print_centered("glory to arstotzka", 70, 7, "\^oaff")
+
+
     end
 }
 
