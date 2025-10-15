@@ -65,7 +65,7 @@ gates = {
             end
             
             -- Delete _gt if it has moved off screen
-            if _gt.x < -_gt.w then
+            if _gt.x < -_gt.w - 7 then
                 del(self.list, _gt)
             end
         end
