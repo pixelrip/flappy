@@ -60,7 +60,8 @@ states.title = {
             print_centered("approved by the ministry", 93, 7)
             print_centered("of bird migration control", 100, 7)
         elseif self.anim_state == "ready" then
-            print_centered("press 🅾️ to begin", 97, 7)
+            print_centered("high score: "..game.high_score, 93, 7)
+            print_centered("press 🅾️ to begin", 102, 7)
         end
     end
 }
@@ -98,6 +99,11 @@ states.game_over = {
     init = function(self)
         sfx(1) -- hit sound
         sfx(3) -- game_over
+
+        if game.score > game.high_score then
+            game.high_score = game.score
+            save:save_all()
+        end
     end,
 
     update = function(self)

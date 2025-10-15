@@ -6,6 +6,8 @@ function _init()
 	custom_palette = {[0]=0,1,2,-16,4,5,6,7,8,9,-14,-13,12,13,14,-11}
 	reset_pal()
 
+	save:init()
+	save:load_all()
 	input:init()
 	switch_state(states.title)
 end

@@ -2,6 +2,7 @@ game = {
 
     -- Game score
     score = 0,
+    high_score = 0,    
 
     -- Difficulty settings
     base_difficulty = 1,

@@ -6,6 +6,7 @@ __lua__
 #include src/input.lua
 #include src/helpers.lua
 #include src/game.lua
+#include src/save.lua
 #include src/player.lua
 #include src/gates.lua
 #include src/floor.lua
