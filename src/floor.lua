@@ -7,27 +7,9 @@ floor = {
 
     --sprite
     sprite = {
-        ground = {
-            sx = 0,
-            sy = 35,
-            sw = 48,
-            sh = 8,
-            sa = 15
-        },
-        wire = {
-            sx = 0,
-            sy = 30,
-            sw = 26,
-            sh = 5,
-            sa = 12
-        },
-        texture = {
-            sx = 19,
-            sy = 15,
-            sw = 10, 
-            sh = 6,
-            sa = 12,
-        }
+        ground = make_sprite("0,35,48,8,15"),
+        wire = make_sprite("0,30,26,5,12"),
+        texture = make_sprite("19,15,10,6,12")
     },
 
     cracks = {
