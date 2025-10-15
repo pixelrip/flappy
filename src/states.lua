@@ -96,12 +96,15 @@ states.playing = {
 }
 
 states.game_over = {
+    new_high_score = false,
+
     init = function(self)
         sfx(1) -- hit sound
         sfx(3) -- game_over
 
         if game.score > game.high_score then
             game.high_score = game.score
+            self.new_high_score = true
             save:save_all()
         end
     end,
@@ -121,7 +124,13 @@ states.game_over = {
         player:draw()
 
         font:print("game over", 14, 56)
-        print_centered("glory to arstotzka", 70, 7, "\^oaff")
+        print_centered("glory to arstotzka", 40, 7, "\^oaff")
+
+        if self.new_high_score then
+            print_centered("new high score: "..game.score, 70, 7, "\^obe0")
+        else
+            print_centered("your score: "..game.score, 70, 7, "\^obe0")
+        end
     end
 }
 
