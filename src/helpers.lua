@@ -12,6 +12,17 @@ function draw_sprite(x,y,obj)
     reset_pal()
 end
 
+function make_sprite(s)
+    local v = split(s) or {}
+    return {
+        sx = v[1],
+        sy = v[2],
+        sw = v[3],
+        sh = v[4],
+        sa = v[5] or 0
+    }
+end
+
 function rnd_between(min, max)
     return flr(rnd(max - min + 1)) + min
 end

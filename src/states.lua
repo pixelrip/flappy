@@ -15,8 +15,9 @@ states.title = {
 
     draw = function(self)
         cls(0)
-        print("FLAPPY", 50, 40, 7)
-        print("Press o to start", 20, 60, 7)
+        font:print("BIRD", 0, 0)
+        font:print("FLAP", 0, 28)
+        font:print("programme", 0, 56)
     end
 }
 

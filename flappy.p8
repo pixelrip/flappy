@@ -10,6 +10,7 @@ __lua__
 #include src/floor.lua
 #include src/clouds.lua
 #include src/buildings.lua
+#include src/font.lua
 #include src/main.lua
 
 __gfx__
