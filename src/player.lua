@@ -2,29 +2,11 @@ player = {
     -- pos
     x = 10,
     y = 60,
-    -- sprite states (token inefficient but whatever for now)
+    -- sprite states
     sprite ={
-        idle = {
-            sx = 0,
-            sy = 15,
-            sw = 19,
-            sh = 15,
-            sa = 12,
-        },
-        wing_up = {
-            sx = 0,
-            sy = 0,
-            sw = 19,
-            sh = 15,
-            sa = 12,
-        },
-        wing_down = {
-            sx = 19,
-            sy = 0,
-            sw = 19,
-            sh = 15,
-            sa = 12,
-        },
+        idle = make_sprite("0,15,19,15,12"),
+        wing_up = make_sprite("0,0,19,15,12"),
+        wing_down = make_sprite("19,0,19,15,12"),
     },
     
     -- vel
