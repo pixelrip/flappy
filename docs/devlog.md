@@ -1,5 +1,5 @@
 # Dev Log
-Total Time: 37.5hrs
+Total Time: 37hrs
 
 ### TODO:
 
@@ -18,7 +18,7 @@ Total Time: 37.5hrs
 
 ### Day 8: 2025-10-15 
 
-- Time worked: 5hrs
+- Time worked: 4.5hrs
 - Fixed bug where gate shadow disappeared too early
 - Refactored state management (states.lua)
 - Made a way to render the custom title screen fonts (font.lua)
