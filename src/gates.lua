@@ -47,6 +47,7 @@ gates = {
     reset = function(self)
         self.list = {}
         self.spawn_timer = 0
+        self.next_gate = 0
     end,
 
 

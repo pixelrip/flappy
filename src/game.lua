@@ -14,6 +14,12 @@ game = {
         self.base_difficulty = 1
         self.spike_modifier = 0
         self.spike_timer = 0
+
+        buildings:reset()
+        clouds:reset()
+        floor:reset()
+        gates:reset()
+        player:reset()
     end,
 
     add_score = function(self, _ps)

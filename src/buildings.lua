@@ -53,7 +53,6 @@ buildings = {
 
     reset = function(self)
         self.layers = {}
-        self:init()
     end,
 
 

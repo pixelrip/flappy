@@ -79,6 +79,17 @@ floor = {
         end
     end,
 
+    reset = function(self)
+        self.x_offset.ground = 0
+        self.x_offset.wire = 0
+        self.x_offset.texture = 0
+
+        self.cracks.current = 1
+        self.cracks.spawn_timer = 0
+        self.cracks.next_crack = 0
+        self.cracks.list = {}
+    end,
+
     -- "Private" methods
     _draw_scroller = function(self, _y, _s, _o)
         local _w = _s.sw
