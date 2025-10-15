@@ -3,21 +3,42 @@ current_state = nil
 states = {}
 
 states.title = {
+    anim_timer = 0,
+    anim_y = 128,
+    anim_complete = false,
+
     init = function(self)
         -- Initialize title state
     end,
 
     update = function(self)
-        if btnp(4)then -- Z or X key
-            switch_state(states.playing)
+        if self.anim_y > 16 then
+            self.anim_timer += 1
+
+            if self.anim_timer % 30 == 0 then
+                self.anim_y -= 8
+            end
+        else 
+            self.anim_complete = true
+        end
+
+        if self.anim_complete then
+            if btnp(4)then -- Z or X key
+                switch_state(states.playing)
+            end
         end
     end,
 
     draw = function(self)
         cls(0)
-        font:print("BIRD", 0, 0)
-        font:print("FLAP", 0, 28)
-        font:print("programme", 0, 56)
+        font:print("BIRD", 12, self.anim_y)
+        font:print("FLAP", 12, self.anim_y + 28)
+        font:print("programme", 12, self.anim_y + 56)
+
+        if self.anim_complete then
+            print_centered("approved by the ministry", 93, 7)
+            print_centered("of bird migration control", 100, 7)
+        end
     end
 }
 
