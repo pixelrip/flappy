@@ -76,7 +76,7 @@ player = {
         -- TODO: Magic numnbers; not tied to actual floor
         if self.y+13 > 121 or self.y < -13 then
             self.vy=0
-            game:switch_state("game_over")
+            switch_state(states.game_over)
         end
     end,
 

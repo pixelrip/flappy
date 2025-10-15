@@ -7,37 +7,17 @@ function _init()
 	reset_pal()
 
 	-- init game "modules"
-	gates:init()
-	clouds:init()
-	buildings:init()
+	switch_state(states.title)
 end
 
 function _update()
-	if game.state == "playing" then
-		game:update_spike()
-		clouds:update()
-		buildings:update()
-		player:update()
-		floor:update()
-		gates:update(player)
-	elseif game.state == "game_over" then
-		if btnp(4) then
-			game:reset()
-			game:switch_state("playing")
-		end
+	if current_state and current_state.update then
+		current_state:update()
 	end
 end
 
 function _draw()
-	cls(15)
-	clouds:draw()
-	buildings:draw()
-	floor:draw()
-	gates:draw()
-	player:draw()
-	print(game.score, 2, 122, 7)
-
-	if game.state == "game_over" then
-		print_centered("press 🅾️ to restart", 20, 7)
+	if current_state and current_state.draw then
+		current_state:draw()
 	end
 end

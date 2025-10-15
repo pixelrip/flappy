@@ -1,6 +1,4 @@
 game = {
-    -- State management
-    state = "playing",
 
     -- Game score
     score = 0,
@@ -16,15 +14,8 @@ game = {
         self.base_difficulty = 1
         self.spike_modifier = 0
         self.spike_timer = 0
-        player:reset()
-        gates:reset()
     end,
 
-    switch_state = function(self, _ns)
-        self.state = _ns
-        log("switch_state(): " .. _ns)
-    end,
-    
     add_score = function(self, _ps)
         sfx(2) -- score sound
         self.score += _ps

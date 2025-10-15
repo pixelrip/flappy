@@ -61,7 +61,7 @@ gates = {
             if self:_check_collided(_gt, _pl) then
                 sfx(1) -- hit sound
                 sfx(3) -- game_over
-                game:switch_state("game_over")
+                switch_state(states.game_over)
             end
             
             -- Delete _gt if it has moved off screen
