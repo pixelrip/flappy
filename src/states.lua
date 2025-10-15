@@ -96,7 +96,8 @@ states.playing = {
 
 states.game_over = {
     init = function(self)
-        -- Calculate final score or other game over logic
+        sfx(1) -- hit sound
+        sfx(3) -- game_over
     end,
 
     update = function(self)
@@ -115,8 +116,6 @@ states.game_over = {
 
         font:print("game over", 14, 56)
         print_centered("glory to arstotzka", 70, 7, "\^oaff")
-
-
     end
 }
 

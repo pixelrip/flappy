@@ -60,8 +60,6 @@ gates = {
 
             -- Check for collisions with _pl
             if self:_check_collided(_gt, _pl) then
-                sfx(1) -- hit sound
-                sfx(3) -- game_over
                 switch_state(states.game_over)
             end
             
