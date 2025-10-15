@@ -1,17 +1,11 @@
 # Dev Log
-Total Time: 32.5hrs
+Total Time: 37.5hrs
 
 ### TODO:
 
-- [ ] Bug: Gate shadow disappears too early
-- [ ] Title screen
 - [ ] Update README.md with theme/thanks
-- [ ] High score tracking
-- [ ] Game over screen
 - [ ] Music: Title
 - [ ] Music: Gameplay
-- [ ] Level progression (mountains -> city -> desert -> trees)
-- [ ] Title screen
 
 **Potental Token Savings (Only if Needed)**
 - [ ] DRY up cloud + fence
@@ -21,6 +15,21 @@ Total Time: 32.5hrs
 ---
 
 ## Daily Notes
+
+### Day 8: 2025-10-15 
+
+- Time worked: 5hrs
+- Fixed bug where gate shadow disappeared too early
+- Refactored state management (states.lua)
+- Made a way to render the custom title screen fonts (font.lua)
+- Added text and animation to title screen
+- Simple input manager to detect button onpress/onrelease (input.lua)
+- Refactored player input to use input manager
+- Updated game over screen with new type and outlined text
+- Fixed ground collision to behaves the same as gate collision
+- Added very basic high score tracking with cartdata
+
+
 
 ### Day 7: 2025-10-14
 
