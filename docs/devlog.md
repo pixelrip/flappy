@@ -20,7 +20,7 @@ Total Time: 37hrs
 - Working on translating the Papers Please theme into PICO-8
 - Working with triplets in PICO-8 is not fun!
 - Completed sequencing of bass and lead
-- WIP: Experiment with some instruments, integrate into title scene
+- WIP: Experiment with instruments, integrate into title sequence
 
 
 ### Day 8: 2025-10-15 
