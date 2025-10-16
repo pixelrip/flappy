@@ -2,10 +2,8 @@
 Total Time: 37hrs
 
 ### TODO:
-
+- [ ] Revisit sound effects based on theme
 - [ ] Update README.md with theme/thanks
-- [ ] Music: Title
-- [ ] Music: Gameplay
 
 **Potental Token Savings (Only if Needed)**
 - [ ] DRY up cloud + fence
@@ -18,10 +16,11 @@ Total Time: 37hrs
 
 ### Day 9: 2025-10-16
 
-- Time: 45m @ City
-- Pomodoros: x x x _ - _ _ _ _
-- Working on translating the Papers Please theme into PICO-8; triplets causing a bit of a headache?
-- 
+- Time: 3hrs
+- Working on translating the Papers Please theme into PICO-8
+- Working with triplets in PICO-8 is not fun!
+- Completed sequencing of bass and lead
+- WIP: Experiment with some instruments, integrate into title scene
 
 
 ### Day 8: 2025-10-15 
