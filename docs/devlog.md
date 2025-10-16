@@ -16,6 +16,14 @@ Total Time: 37hrs
 
 ## Daily Notes
 
+### Day 9: 2025-10-16
+
+- Time: 45m @ City
+- Pomodoros: x x x _ - _ _ _ _
+- Working on translating the Papers Please theme into PICO-8; triplets causing a bit of a headache?
+- 
+
+
 ### Day 8: 2025-10-15 
 
 - Time worked: 4.5hrs
