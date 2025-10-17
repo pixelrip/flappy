@@ -9,6 +9,7 @@ states.title = {
 
     init = function(self)
         -- Initialize title state
+        music(0)
     end,
 
     update = function(self)
@@ -68,6 +69,7 @@ states.title = {
 
 states.playing = {
     init = function(self)
+        music(-1,10000)
         game:reset()
 
         gates:init()
