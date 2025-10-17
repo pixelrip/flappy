@@ -1,5 +1,5 @@
 # Dev Log
-Total Time: 37hrs
+Total Time: 40hrs
 
 ### TODO:
 - [ ] Revisit sound effects based on theme
