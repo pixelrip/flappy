@@ -1,10 +1,10 @@
 # Dev Log
-Total Time: 40hrs
+Total Time: 42hrs
 
 ### TODO:
 - [ ] Revisit game difficulty tweaking: eliminate impossible scenarios
-    - [ ] Create an `effective_distance()` type of function based on speed/difficulty
     - [ ] Make `difficulty.md` relevant or delete it
+- [ ] BUG: One of the cloud sprites is screwed up
 - [ ] Introduce "stamps" as score
 - [ ] Revisit sound effects
 - [ ] Update README.md with theme/thanks
@@ -20,9 +20,10 @@ Total Time: 40hrs
 ## Daily Notes
 
 ### Day 10: 2025-10-21
-- Pomodoros: X _ _ _ - _ _ _ _
+- Time worked: 2hrs
 - Moved DEBUG into each module for slightly more finite control
-- 
+- Improved logging for difficulty curve
+- WIP: Tweaking gate spawning for difficulty
 
 
 ### Day 9: 2025-10-16
