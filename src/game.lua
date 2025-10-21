@@ -27,7 +27,7 @@ game = {
     add_score = function(self, _ps)
         sfx(2) -- score sound
         self.score += _ps
-        self.base_difficulty = 1 + flr(self.score / DIFFICULTY_INCREASE_RATE)
+        self.base_difficulty = self:_calculate_base_difficulty(self.score)
         --[[if self.DEBUG then
             log("add_score(): ")
             log("   score = " .. self.score)
@@ -77,6 +77,22 @@ game = {
         if self.DEBUG then
             log("   _trigger_spike(): spiked by " .. _sm .. " for " .. _st .. " frames")
         end
+    end,
+
+    _calculate_base_difficulty = function(self, _s)
+        if score == 0 then return 1 end
+
+        local _d = 1
+        local _t = 0
+
+        while _t < _s do
+            _t += _d
+            if _t < _s then
+                _d += 1
+            end
+        end
+
+        return _d + 1
     end
 
 }
