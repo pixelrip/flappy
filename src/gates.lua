@@ -118,13 +118,17 @@ gates = {
 
     _get_next_gate = function(self, _d, _s, _cur)
         -- Calculate the next spawn TIME (in frames) based on difficulty
-        -- Time for the gate to move on screen
+        -- Number of frames until the current gate is on the screen
         local _t = flr(_cur.w / _s)
 
         -- Gap time based on difficulty
-        local _offset = (_d - 1) * GATE_GAP_INCREMENT
-        local _gmax = flr(max(GATE_GAP_MAX - _offset, GATE_CLAMP_GAP_MAX) / _s)
-        local _gmin = flr(max(GATE_GAP_MIN - _offset, GATE_CLAMP_GAP_MIN) / _s)
+        local _offset = (_d - 1) * GATE_GAP_INCREMENT -- 0, 4, 8, 12, 16...68
+        local _gmin = flr(max(GATE_GAP_MIN - _offset, GATE_CLAMP_GAP_MIN))
+                              -- max(64 - 0, 32) / 1 = 64
+                              -- max(64 - 68, 32) / 4 = 8
+        local _gmax = flr(max(GATE_GAP_MAX - _offset, GATE_CLAMP_GAP_MAX))
+                              -- max(128 - 0, 64) / 1 = 128
+                              -- max(128-68, 64) / 4 = 16
         local _g = rnd_between(_gmin, _gmax)
         
         if self.DEBUG then
@@ -197,7 +201,7 @@ gates = {
         -- Log the collision for now
         if not _safe then
             if self.DEBUG then
-                log("   _check_collided(): true")
+                log("COLLISION")
             end
             return true
         end
