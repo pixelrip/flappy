@@ -1,7 +1,5 @@
 -- Constants for game configuration
 
-DEBUG = false
-
 SPIKE_DURATION = 300 -- difficulty spike lasts for X frames
 SPIKE_DIFFICULTY = 5 -- difficulty spike increases difficulty by X
 SPIKE_INTERVAL = 15 -- difficulty spike every X score points

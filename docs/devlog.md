@@ -19,6 +19,11 @@ Total Time: 40hrs
 
 ## Daily Notes
 
+### Day 10: 2025-10-21
+- Pomodoros: _ _ _ _ - _ _ _ _
+- 
+
+
 ### Day 9: 2025-10-16
 
 - Time: 3hrs

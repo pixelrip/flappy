@@ -1,4 +1,5 @@
 player = {
+    DEBUG = false,
     -- pos
     x = 10,
     y = 60,
@@ -58,7 +59,7 @@ player = {
         draw_sprite(self.x, self.y, self.sprite[self.anim_state])
 
         -- DEBUG
-        if DEBUG then
+        if self.DEBUG then
             print("vy: "..self.vy, self.x+1, self.y-10, 10)
             self:_draw_hitbox()
         end

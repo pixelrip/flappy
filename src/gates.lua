@@ -5,7 +5,7 @@
 
 gates = {
 
-    DEBUG = false, 
+    DEBUG = true, 
     list = {},
     spawn_timer = 0,
     next_gate = 0,
@@ -150,8 +150,9 @@ gates = {
 
         -- Log the collision for now
         if not _safe then
-            log("_check_collided(): true")
-
+            if self.DEBUG then
+                log("_check_collided(): true")
+            end
             return true
         end
     end,
