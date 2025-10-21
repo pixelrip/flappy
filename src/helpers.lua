@@ -24,7 +24,7 @@ function make_sprite(s)
 end
 
 function rnd_between(min, max)
-    return flr(rnd(max - min + 1)) + min
+    return flr(rnd(max - min + 1) + min)
 end
 
 function print_centered(txt, y, col, outline)

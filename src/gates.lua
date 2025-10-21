@@ -9,6 +9,7 @@ gates = {
     list = {},
     spawn_timer = 0,
     next_gate = 0,
+    count = 0,
 
     -- "Public" methods 
     init = function(self)
@@ -29,6 +30,7 @@ gates = {
             
             -- DEBUG
             if self.DEBUG then
+                --[[
                 print("y: ".._gt.y, _gt.x+1, _gt.y-18, 7)
                 print("w: ".._gt.w, _gt.x+1, _gt.y-12, 7)
                 print("h: ".._gt.h, _gt.x+1, _gt.y-6, 7)
@@ -39,6 +41,7 @@ gates = {
                 print("mx: ".._gt.debug_max_gap, _gt.x+_gt.w+20, _gt.y-18, 7)
                 print("mn: ".._gt.debug_min_gap, _gt.x+_gt.w+20, _gt.y-12, 7)
                 print("g: ".._gt.debug_gap, _gt.x+_gt.w+20, _gt.y-6, 7)
+                ]]--
             end
 
         end
@@ -80,20 +83,23 @@ gates = {
     end,
 
     _spawn_gate = function(self, _d, _s)
+        if self.DEBUG then
+            self.count += 1
+            log("\nspawn_gate(): "..self.count)
+            log("   difficulty: ".._d)
+            log("   speed: ".._s)
+        end
+
         local _w = self:_get_gate_width(_d)
         local _h = self:_get_gate_height(_d)
         local _y = self:_get_gate_y(_d, _h)
 
-        -- Calculate the next spawn time based on difficulty
-        -- Time for the gate to move on screen
-        local _t = _w / _s
-        -- Gap time based on difficulty
-        local _offset = (_d - 1) * GATE_GAP_INCREMENT
-        local _gmax = flr(max(GATE_GAP_MAX - _offset, GATE_CLAMP_GAP_MAX) / _s)
-        local _gmin = flr(max(GATE_GAP_MIN - _offset, GATE_CLAMP_GAP_MIN) / _s)
-        local _g = rnd_between(_gmin, _gmax)
+        self.next_gate = self:_get_next_gate(_d, _s, {
+            w = _w,
+            h = _h,
+            y = _y
+        })
 
-        self.next_gate = _t + _g
 
         add(self.list, {
             x = 128, -- Start off screen
@@ -109,23 +115,63 @@ gates = {
         })
 
     end,
+
+    _get_next_gate = function(self, _d, _s, _cur)
+        -- Calculate the next spawn TIME (in frames) based on difficulty
+        -- Time for the gate to move on screen
+        local _t = flr(_cur.w / _s)
+
+        -- Gap time based on difficulty
+        local _offset = (_d - 1) * GATE_GAP_INCREMENT
+        local _gmax = flr(max(GATE_GAP_MAX - _offset, GATE_CLAMP_GAP_MAX) / _s)
+        local _gmin = flr(max(GATE_GAP_MIN - _offset, GATE_CLAMP_GAP_MIN) / _s)
+        local _g = rnd_between(_gmin, _gmax)
+        
+        if self.DEBUG then
+            log("   _get_next_gate(): ")
+            log("      _t = ".._t)
+            log("      _g = rnd_between(".._gmin..", ".._gmax..") -> ".._g)
+            log("      next_gate = ".._t+_g)
+        end
+        
+        return _t + _g
+
+    end,
     
     _get_gate_height = function(self, _d)
         local _offset = (_d - 1) * GATE_HEIGHT_INCREMENT
         local _ghmax = max(GATE_BASE_MAX_HEIGHT - _offset, GATE_CLAMP_MAX_HEIGHT)
         local _ghmin = max(GATE_BASE_MIN_HEIGHT - _offset, GATE_CLAMP_MIN_HEIGHT)
-        return rnd_between(_ghmin, _ghmax)
+        
+        --DEBUG: Could directly return rnd_between
+        local _r = rnd_between(_ghmin, _ghmax)
+        if self.DEBUG then
+            log("   _get_gate_height(): rnd_between(".._ghmin..", ".._ghmax..") = ".. _r)
+        end
+        
+        return _r
     end,
     
     _get_gate_y = function(self, _d, _h)
-        return rnd_between(28, 101 - _h)
+        -- DEBUG: Could directly return rnd_between
+        local _r = rnd_between(28, 101 - _h)
+        if self.DEBUG then
+            log("   _get_gate_y(): rnd_between(28,"..101-_h..") = ".._r)
+        end
+        return _r
     end,
 
     _get_gate_width = function(self, _d)
         local _offset = (_d - 1) * GATE_WIDTH_INCREMENT
         local _gwmax = min(GATE_BASE_MAX_WIDTH + _offset, GATE_CLAMP_MAX_WIDTH)
         local _gwmin = min(GATE_BASE_MIN_WIDTH + _offset, GATE_CLAMP_MIN_WIDTH)
-        return rnd_between(_gwmin, _gwmax)
+        
+        -- DEBUG: Could directly return rnd_between
+        local _r = rnd_between(_gwmin, _gwmax)
+        if self.DEBUG then
+            log("   _get_gate_width: rnd_between(".._gwmin..", ".._gwmax..") = ".._r)
+        end
+        return _r
     end,
 
     _check_collided = function(self, _gt, _pl)
@@ -151,7 +197,7 @@ gates = {
         -- Log the collision for now
         if not _safe then
             if self.DEBUG then
-                log("_check_collided(): true")
+                log("   _check_collided(): true")
             end
             return true
         end

@@ -1,5 +1,5 @@
 function _init()
-	log("=== flappy started ===")
+	log("\n\n\n=== flappy started ===")
 	-- custom color palette
 	-- https://nerdyteachers.com/PICO-8/Palette/?c=WzAsMSwyLDE2LDQsNSw2LDcsOCw5LDE4LDE5LDEyLDEzLDE0LDIxXQ==
 	poke(0x5f2e,1)

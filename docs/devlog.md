@@ -20,7 +20,8 @@ Total Time: 40hrs
 ## Daily Notes
 
 ### Day 10: 2025-10-21
-- Pomodoros: _ _ _ _ - _ _ _ _
+- Pomodoros: X _ _ _ - _ _ _ _
+- Moved DEBUG into each module for slightly more finite control
 - 
 
 

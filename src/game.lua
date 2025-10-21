@@ -1,5 +1,5 @@
 game = {
-    DEBUG = false,
+    DEBUG = true,
 
     -- Game score
     score = 0,
@@ -28,9 +28,11 @@ game = {
         sfx(2) -- score sound
         self.score += _ps
         self.base_difficulty = 1 + flr(self.score / DIFFICULTY_INCREASE_RATE)
-        if self.DEBUG then
-            log("add_score(): score=" .. self.score .. " base_difficulty=" .. self.base_difficulty)
-        end
+        --[[if self.DEBUG then
+            log("add_score(): ")
+            log("   score = " .. self.score)
+            log("   base_difficulty = " .. self.base_difficulty)
+        end]]--
     end, 
 
     -- Effective difficulty
@@ -51,17 +53,20 @@ game = {
             if self.spike_timer <= 0 then
                 self.spike_modifier = 0
                 if self.DEBUG then
-                    log("update_spike(): spike ended")
+                    log("\nupdate_spike(): spike ended")
+                    log("🔥 🔥 🔥\n")
                 end
             end
         end
 
         -- Spike spawner
         if self.score > 0 and self.score % SPIKE_INTERVAL == 0 and self.spike_modifier == 0 and self.score > SPIKE_INTERVAL-1 then
-            self:_trigger_spike(SPIKE_DIFFICULTY, SPIKE_DURATION) 
             if self.DEBUG then
+                log("\n🔥 🔥 🔥")
                 log("update_spike(): spike started")
             end
+
+            self:_trigger_spike(SPIKE_DIFFICULTY, SPIKE_DURATION) 
         end
     end,
 
@@ -70,7 +75,7 @@ game = {
         self.spike_modifier = _sm
         self.spike_timer = _st
         if self.DEBUG then
-            log("_trigger_spike(): spiked by " .. _sm .. " for " .. _st .. " frames")
+            log("   _trigger_spike(): spiked by " .. _sm .. " for " .. _st .. " frames")
         end
     end
 
