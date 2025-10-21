@@ -2,8 +2,13 @@
 Total Time: 40hrs
 
 ### TODO:
-- [ ] Revisit sound effects based on theme
+- [ ] Revisit game difficulty tweaking: eliminate impossible scenarios
+    - [ ] Create an `effective_distance()` type of function based on speed/difficulty
+    - [ ] Make `difficulty.md` relevant or delete it
+- [ ] Introduce "stamps" as score
+- [ ] Revisit sound effects
 - [ ] Update README.md with theme/thanks
+- [ ] Publish?
 
 **Potental Token Savings (Only if Needed)**
 - [ ] DRY up cloud + fence
