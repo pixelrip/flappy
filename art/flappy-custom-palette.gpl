@@ -1,0 +1,20 @@
+GIMP Palette
+Name: PICO-8 Custom Palette
+Columns: 4
+#
+  0   0   0	Color_0
+ 29  43  83	Color_1
+126  37  83	Color_2
+ 41  24  20	Color_-16
+171  82  54	Color_4
+ 95  87  79	Color_5
+194 195 199	Color_6
+255 241 232	Color_7
+255   0  77	Color_8
+255 163   0	Color_9
+ 66  33  54	Color_-14
+ 18  83  89	Color_-13
+  0 231  86	Color_11
+  0 135  81	Color_3
+255 119 168	Color_14
+ 73  51  59	Color_-11
