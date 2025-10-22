@@ -1,5 +1,5 @@
 game = {
-    DEBUG = true,
+    DEBUG = false,
 
     -- Game score
     score = 0,
