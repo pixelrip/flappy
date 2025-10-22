@@ -25,6 +25,7 @@ player = {
     anim_state = "idle",
     anim_timer = 0,
 
+
     -- "Public" methods
     reset = function(self)
         self.x = P_START_X

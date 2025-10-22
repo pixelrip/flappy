@@ -28,11 +28,14 @@ game = {
         sfx(2) -- score sound
         self.score += _ps
         self.base_difficulty = self:_calculate_base_difficulty(self.score)
-        --[[if self.DEBUG then
+
+        stamps:create(player, "approved")
+        
+        if self.DEBUG then
             log("add_score(): ")
             log("   score = " .. self.score)
             log("   base_difficulty = " .. self.base_difficulty)
-        end]]--
+        end
     end, 
 
     -- Effective difficulty

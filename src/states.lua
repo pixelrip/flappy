@@ -83,6 +83,7 @@ states.playing = {
 		buildings:update()
 		player:update()
 		floor:update()
+        stamps:update()
 		gates:update(player)
     end,
 
@@ -93,7 +94,9 @@ states.playing = {
         floor:draw()
         gates:draw()
         player:draw()
+        stamps:draw()
         print(game.score, 2, 122, 7)
+        print(#stamps.list, 10, 122, 7)
     end
 }
 
@@ -103,6 +106,8 @@ states.game_over = {
     init = function(self)
         sfx(1) -- hit sound
         sfx(3) -- game_over
+
+        stamps:create(player, "approved")
 
         if game.score > game.high_score then
             game.high_score = game.score
