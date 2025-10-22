@@ -122,13 +122,13 @@ gates = {
         local _t = flr(_cur.w / _s)
 
         -- Gap time based on difficulty
-        local _offset = (_d - 1) * GATE_GAP_INCREMENT -- 0, 4, 8, 12, 16...68
+        local _offset = (_d - 1) * GATE_GAP_INCREMENT -- 0, 4, 8, 12, 16... 36 ...68
         local _gmin = flr(max(GATE_GAP_MIN - _offset, GATE_CLAMP_GAP_MIN))
-                              -- max(64 - 0, 32) / 1 = 64
-                              -- max(64 - 68, 32) / 4 = 8
+                              -- max(64 - 0, 32) = 64
+                              -- max(64 - 36, 32) = 32
         local _gmax = flr(max(GATE_GAP_MAX - _offset, GATE_CLAMP_GAP_MAX))
-                              -- max(128 - 0, 64) / 1 = 128
-                              -- max(128-68, 64) / 4 = 16
+                              -- max(128 - 0, 64) = 128
+                              -- max(128 - 36, 64) = 64
         local _g = rnd_between(_gmin, _gmax)
         
         if self.DEBUG then
