@@ -5,11 +5,12 @@
 
 gates = {
 
-    DEBUG = true, 
+    DEBUG = false, 
     list = {},
     spawn_timer = 0,
     next_gate = 0,
     count = 0,
+    prev_gate_center = nil, -- Track previous gate center
 
     -- "Public" methods 
     init = function(self)
@@ -51,6 +52,7 @@ gates = {
         self.list = {}
         self.spawn_timer = 0
         self.next_gate = 0
+        self.prev_gate_center = nil
     end,
 
 
@@ -67,7 +69,13 @@ gates = {
             end
             
             -- Delete _gt if it has moved off screen
-            if _gt.x < -_gt.w - 7 then
+            -- DEBUG
+            local _debug_buffer = 0
+            if self.DEBUG then
+                _debug_buffer = 256
+            end
+
+            if _gt.x < -_gt.w - 7 - _debug_buffer then
                 del(self.list, _gt)
             end
         end
@@ -92,7 +100,10 @@ gates = {
 
         local _w = self:_get_gate_width(_d)
         local _h = self:_get_gate_height(_d)
-        local _y = self:_get_gate_y(_d, _h)
+        local _y = self:_get_gate_y(_d, _h, self.prev_gate_center)
+
+        -- Store the center of this gate for next spawn
+        self.prev_gate_center = _y + _h / 2
 
         self.next_gate = self:_get_next_gate(_d, _s, {
             w = _w,
@@ -156,11 +167,37 @@ gates = {
         return _r
     end,
     
-    _get_gate_y = function(self, _d, _h)
-        -- DEBUG: Could directly return rnd_between
-        local _r = rnd_between(28, 101 - _h)
+    _get_gate_y = function(self, _d, _h, _prev_center)
+        local _min = 28
+        local _max = 101 - _h
+        local _prev_center = _prev_center or false
+
+        local _offset = max(GATE_NEW_Y_CLAMP_MIN, GATE_NEW_Y_CLAMP - (_d-1) * GATE_NEW_Y_INCREMENT)
+        
+        -- If there's a previous gate, clamp to within GATE_NEW_Y_CLAMP pixels of its center
+        if _prev_center then
+            local _new_center_min = _prev_center - _offset
+            local _new_center_max = _prev_center + _offset
+            
+            -- Convert center constraints to y position constraints
+            local _clamped_min = _new_center_min - _h / 2
+            local _clamped_max = _new_center_max - _h / 2
+            
+            -- Apply both placement limits and proximity constraint
+            _min = max(_min, _clamped_min)
+            _max = min(_max, _clamped_max)
+        end
+        
+        local _r = rnd_between(_min, _max)
         if self.DEBUG then
-            log("   _get_gate_y(): rnd_between(28,"..101-_h..") = ".._r)
+            local _nc = _r+(_h/2)
+            if not _prev_center then _prev_center = 0 end
+            log("   _get_gate_y(): ")
+            log("      _prev_center: ".._prev_center)
+            log("      _offset: ".._offset)
+            log("      rnd_between(".._min..",".._max..") = ".._r)
+            log("      new_center: ".._nc)
+            log("      difference: ".._nc-_prev_center)
         end
         return _r
     end,
@@ -287,6 +324,12 @@ gates = {
             rectfill(_gx1+2, _gy0+1, _gx1+8, _gy1, 3)
         end
 
+
+        -- DEBUG: Draw center line
+        if self.DEBUG then
+            local _cy = _y + (_h / 2)
+            line(_x, _cy, _x+128, _cy, 9)
+        end
     end
 }
 

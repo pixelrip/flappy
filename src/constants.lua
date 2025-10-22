@@ -32,4 +32,8 @@ GATE_GAP_MAX = 92
 GATE_GAP_MIN = 64
 GATE_GAP_INCREMENT = 4
 GATE_CLAMP_GAP_MAX = 48
-GATE_CLAMP_GAP_MIN = 32
+GATE_CLAMP_GAP_MIN = 24
+
+GATE_NEW_Y_INCREMENT = 2
+GATE_NEW_Y_CLAMP = 40 -- Max vertical distance (in pixels) between consecutive gate centers
+GATE_NEW_Y_CLAMP_MIN = 10
