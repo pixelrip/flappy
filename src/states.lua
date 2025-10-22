@@ -2,6 +2,8 @@ current_state = nil
 
 states = {}
 
+states.DEBUG = false
+
 states.title = {
     anim_timer = 0,
     anim_y = 128,
@@ -95,19 +97,26 @@ states.playing = {
         gates:draw()
         player:draw()
         stamps:draw()
-        print(game.score, 2, 122, 7)
-        print(#stamps.list, 10, 122, 7)
+
+        if self.DEBUG then
+            print(game.score, 2, 122, 7)
+            print(#stamps.list, 10, 122, 7)
+        end
     end
 }
 
 states.game_over = {
     new_high_score = false,
+    transition_timer = 0,
+    transitioning = true,
 
     init = function(self)
         sfx(1) -- hit sound
         sfx(3) -- game_over
 
-        stamps:create(player, "approved")
+        self.transitioning = true
+
+        stamps:create(player, "denied")
 
         if game.score > game.high_score then
             game.high_score = game.score
@@ -117,26 +126,37 @@ states.game_over = {
     end,
 
     update = function(self)
-        if input:onpress(4) then 
-            switch_state(states.playing)
+        stamps:update()
+        if self.transition_timer <= 30 then
+            self.transition_timer += 1
+        else
+            self.transitioning = false
+            if input:onpress(4) then 
+                switch_state(states.playing)
+            end
         end
     end,
 
     draw = function(self)
         cls(15)
+
         clouds:draw()
         buildings:draw()
         floor:draw()
         gates:draw()
         player:draw()
+        stamps:draw()
 
-        font:print("game over", 14, 56)
-        print_centered("glory to arstotzka", 40, 7, "\^oaff")
+        if not self.transitioning then
+            font:print("game over", 14, 56)
+            print_centered("glory to arstotzka", 40, 7, "\^oaff")
 
-        if self.new_high_score then
-            print_centered("new high score: "..game.score, 70, 7, "\^obe0")
-        else
-            print_centered("your score: "..game.score, 70, 7, "\^obe0")
+            if self.new_high_score then
+                print_centered("new high score: "..game.score, 70, 7, "\^obe0")
+            else
+                print_centered("your score: "..game.score, 70, 7, "\^obe0")
+                print_centered("high score: "..game.high_score, 80, 7, "\^obe0")
+            end
         end
     end
 }

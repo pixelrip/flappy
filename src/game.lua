@@ -45,6 +45,7 @@ game = {
 
     -- Overall game speed (not effected by diffculty spikes)
     get_speed = function(self)
+        if current_state != states.playing then return 0 end --smelly
         return min(MAX_SPEED, SPEED_INCREASE_RATE * self.base_difficulty + (1 - SPEED_INCREASE_RATE))
     end,
 
