@@ -1,12 +1,8 @@
 # Dev Log
-Total Time: 42hrs
+Total Time: 46.5hrs
 
 ### TODO:
-- [ ] Revisit game difficulty tweaking: eliminate impossible scenarios
-    - [ ] Make `difficulty.md` relevant or delete it
-- [ ] BUG: One of the cloud sprites is screwed up
-- [ ] Introduce "stamps" as score
-- [ ] Revisit sound effects
+- [ ] BUG: Theme music drops on add_score (use specific channels?)
 - [ ] Update README.md with theme/thanks
 - [ ] Publish?
 
@@ -18,6 +14,16 @@ Total Time: 42hrs
 ---
 
 ## Daily Notes
+
+### Day 11: 2025-10-22
+- Time worked: 4.5hrs
+- Continued tweaking gate spawing for difficulty
+- Finished revisiting game difficulty tweaking; as always more playtesting wont hurt
+- Deleted `difficulty.md` 
+- Fixed bug: One of the cloud sprites is screwed up
+- Iterated on theme by making a successful gate pass an "approved" stamp; collision is an "entry denied" stamp
+- Updated sound effects
+ 
 
 ### Day 10: 2025-10-21
 - Time worked: 2hrs
