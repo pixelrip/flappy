@@ -10,7 +10,9 @@ stamps = {
 
     list = {},
 
-    init = function(self)
+    -- "Public" methods
+    reset = function(self)
+        self.list = {}
     end,
 
     update = function(self)

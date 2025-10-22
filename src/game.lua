@@ -22,6 +22,7 @@ game = {
         floor:reset()
         gates:reset()
         player:reset()
+        stamps:reset()
     end,
 
     add_score = function(self, _ps)
