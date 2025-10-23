@@ -1,11 +1,6 @@
 # Dev Log
 Total Time: 46.5hrs
 
-### TODO:
-- [ ] BUG: Theme music drops on add_score (use specific channels?)
-- [ ] Update README.md with theme/thanks
-- [ ] Publish?
-
 **Potental Token Savings (Only if Needed)**
 - [ ] DRY up cloud + fence
 - [ ] String/split fence sprite data (all sprite data?)
@@ -14,6 +9,10 @@ Total Time: 46.5hrs
 ---
 
 ## Daily Notes
+
+### Day 12: 2025-10-23
+- Attempted (successful?) fix for prioritizing sfx
+- Updated readme with some game fiction and acknowledgements
 
 ### Day 11: 2025-10-22
 - Time worked: 4.5hrs
