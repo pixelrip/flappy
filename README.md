@@ -4,7 +4,7 @@ A simple Flappy Bird clone from [Arstotzka](https://papersplea.se) ported to PIC
 
 ## The 20 Games Challenge
 
-In Sept 2025 I found myself deep in learning about game development without actually shipping or sharing many games. Enter the [20 Games Challenge](https://20_games_challenge.gitlab.io). To tackle this audacious and overwhelming challenge I set a few constraints for Games 1-10:
+In Sept 2025 I found myself deep into learning about game development without actually shipping or sharing many games. Enter the [20 Games Challenge](https://20_games_challenge.gitlab.io). To tackle this audacious and overwhelming challenge I set a few constraints:
 
 1. Complete each game (or working vertical slice of a game) in 60 hours
 2. Use [PICO-8](https://www.lexaloffle.com/dl/docs/pico-8_manual.html) as my game engine
