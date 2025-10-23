@@ -111,8 +111,8 @@ states.game_over = {
     transitioning = true,
 
     init = function(self)
-        sfx(1) -- hit sound
-        sfx(3) -- game_over
+        sfx(1,2) -- hit sound
+        sfx(3,3) -- game_over
 
         self.transitioning = true
 

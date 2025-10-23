@@ -39,7 +39,7 @@ player = {
             self.vy = max(P_MAX_VY_UP, self.vy + P_FLAP)
             self.anim_state = "wing_up"
             self.anim_timer = 1 --frames 
-            sfx(0) -- flap sound
+            sfx(0,2) -- flap sound
         end
 
         -- Apply gravity
