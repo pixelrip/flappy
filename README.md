@@ -9,7 +9,8 @@ In Sept 2025 I found myself deep in learning about game development without actu
 1. Complete each game (or working vertical slice of a game) in 60 hours
 2. Use [PICO-8](https://www.lexaloffle.com/dl/docs/pico-8_manual.html) as my game engine
 3. Post each completed cart on the [Lexaloffle PICO-8 forum](https://www.lexaloffle.com/bbs/?cat=7) for feedback
-4. Revisit the scope and constraints for games 11-20 after completing 1-10
+4. Track hours and progress in a simple [devlog](/docs/devlog.md)
+5. Revisit the scope and constraints for games 11-20 after completing 1-10
 
 My goal is to learn and practice more "professional" patterns (forward thinking, extensible code) in game programming while balancing the need to ship actual games.
 
@@ -30,9 +31,10 @@ The game instuctions were simple enough to translate: "Press ❎ to fly your mag
 
 ```plaintext
 flappy/
+├── art/                   # Mockups, custom colors
 ├── docs/                  # Lightweight notes and documentation
 ├── src/                   # Source code
-│   ├── *.lua     # Various game "modules"
+│   ├── *.lua              # Various game "modules"
 │   └── main.lua           # Entry point with _init, _update, _draw
 ├── flappy.p8              # Main P8 file; includes /src files
 └── README.md              # Main project README
