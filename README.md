@@ -19,7 +19,7 @@ My goal is to learn and practice more "professional" patterns (forward thinking,
 
 On a recent trip to Arztotska I discovered the wild amount of knock-off products lining street merchant stalls all throughout the capitol city. I brought a few nick nacks home, but my favorite had to be this "Flappy Bird" knock-off game cart for the ancient Kvant-IG80 console. 
 
-The game instuctions were simple enough to translate: "Press ❎ to fly your magestic Arstotzkan eagle into the heart of our great nation. Glory to Arztotzka." I have yet to make it to the "heart"--frankly I'm not sure there is an ending?
+The game instuctions were simple enough to translate: "Press ❎ to fly your magestic Arstotzkan eagle into the heart of our great nation. Glory to Arztotzka." I have yet to make it to the "heart"--frankly I don't think there is an end to the game.
 
 
 ## Requirements
