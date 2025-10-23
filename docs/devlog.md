@@ -1,5 +1,5 @@
 # Dev Log
-Total Time: 46.5hrs
+Total Time: 48hrs
 
 **Potental Token Savings (Only if Needed)**
 - [ ] DRY up cloud + fence
@@ -11,8 +11,10 @@ Total Time: 46.5hrs
 ## Daily Notes
 
 ### Day 12: 2025-10-23
+- Time worked: 1.5hr
 - Attempted (successful?) fix for prioritizing sfx
 - Updated readme with some game fiction and acknowledgements
+
 
 ### Day 11: 2025-10-22
 - Time worked: 4.5hrs
